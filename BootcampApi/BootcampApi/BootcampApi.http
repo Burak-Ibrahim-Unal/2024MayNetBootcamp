@@ -1,0 +1,6 @@
+@BootcampApi_HostAddress = http://localhost:5129
+
+GET {{BootcampApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
