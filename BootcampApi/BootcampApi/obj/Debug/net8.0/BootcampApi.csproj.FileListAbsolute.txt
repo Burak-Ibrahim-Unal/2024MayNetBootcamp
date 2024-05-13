@@ -32,3 +32,10 @@ C:\Users\Burak\Desktop\Bootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\Bootcam
 C:\Users\Burak\Desktop\Bootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\ref\BootcampApi.dll
 C:\Users\Burak\Desktop\Bootcamp\BootcampApi\BootcampApi\bin\Debug\net8.0\appsettings.Production.json
 C:\Users\Burak\Desktop\Bootcamp\BootcampApi\BootcampApi\bin\Debug\net8.0\appsettings.Staging.json
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\BootcampApi.csproj.AssemblyReference.cache
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\BootcampApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\BootcampApi.AssemblyInfoInputs.cache
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\BootcampApi.AssemblyInfo.cs
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\BootcampApi.csproj.CoreCompileInputs.cache
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\BootcampApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\BootcampApi\obj\Debug\net8.0\BootcampApi.sourcelink.json

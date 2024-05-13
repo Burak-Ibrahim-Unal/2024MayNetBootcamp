@@ -1,0 +1,5 @@
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Core\obj\Debug\net8.0\Bootcamp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Core\obj\Debug\net8.0\Bootcamp.Core.AssemblyInfoInputs.cache
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Core\obj\Debug\net8.0\Bootcamp.Core.AssemblyInfo.cs
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Core\obj\Debug\net8.0\Bootcamp.Core.csproj.CoreCompileInputs.cache
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Core\obj\Debug\net8.0\Bootcamp.Core.sourcelink.json
