@@ -1,6 +1,8 @@
-﻿using Bootcamp.Service.ProductService.DTOs;
+﻿using Bootcamp.Service.ProductService;
+using Bootcamp.Service.ProductService.DTOs;
 using Bootcamp.Service.ProductService.Helpers;
 using Bootcamp.Service.ProductService.ProductServices;
+using BootcampApi.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,12 +34,18 @@ namespace BootcampApi.Controllers
         // complex type => class,record,struct => request body as Json
         // simple type => int,string,decimal => query string by default / route data
 
+        [ServiceFilter(typeof(NotFoundFilter))]
+        [MyResourceFilter]
+        [MyActionFilter]
+        [MyResultFilter]
+        [HttpGet("{productId:int}")]
         [HttpGet("{productId:int}")]
         public async Task<IActionResult> GetById(int productId, [FromServices] PriceCalculator priceCalculator)
         {
             return CreateActionResult(await _productService.GetByIdWithCalculatedTax(productId, priceCalculator));
         }
 
+        [SendSmsWhenExceptionFilter]
         [HttpPost]
         public async Task<IActionResult> Create(ProductCreateRequestDto request)
         {
@@ -47,6 +55,7 @@ namespace BootcampApi.Controllers
             return CreateActionResult(result, nameof(GetById), new { productId = result.Data });
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         [HttpDelete("{productId:int}")]
         public async Task<IActionResult> Delete(int productId)
         {
@@ -54,6 +63,7 @@ namespace BootcampApi.Controllers
         }
 
         // PUT localhost/api/products/10
+        [ServiceFilter(typeof(NotFoundFilter))]
         [HttpPut("{productId:int}")]
         public async Task<IActionResult> Update(int productId, ProductUpdateRequestDto request)
         {
