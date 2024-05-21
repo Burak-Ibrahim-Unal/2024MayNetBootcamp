@@ -16,7 +16,6 @@ namespace Bootcamp.Service.ProductService.Configurations
             services.AddScoped<IAsyncProductService, AsyncProductService>();
             services.AddScoped<IAsyncProductRepository, AsyncProductRepository>();
 
-
             //builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssemblyContaining<ProductCreateRequestValidator>();
             services.AddScoped<NotFoundFilter>();
