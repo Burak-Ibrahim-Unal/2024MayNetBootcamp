@@ -13,20 +13,8 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Repository
 {
-    public static class RepositoryAssembly
+    public struct RepositoryAssembly
     {
-        public static IServiceCollection AddRepositoryServices(this IServiceCollection services, IConfiguration configuration)
-        {
-            //services.AddDbContext<AppDbContext>(option =>
-            //    option.UseSqlServer(configuration.GetConnectionString("SqlServer"),
-            //    option =>
-            //    {
-            //        option.MigrationsAssembly(typeof(RepositoryAssembly).Assembly.GetName().Name);
-            //    }));
 
-            //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
-            return services;
-        }
     }
 }
