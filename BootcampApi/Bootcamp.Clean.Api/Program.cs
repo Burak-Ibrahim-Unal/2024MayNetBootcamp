@@ -1,11 +1,36 @@
+using Bootcamp.Clean.ApplicationService;
+using Bootcamp.Clean.ApplicationService.ProductService.Service;
+using Bootcamp.Clean.Repository;
+using Bootcamp.Clean.Repository.Context;
+using Bootcamp.Clean.Repository.Repositories;
+using Bootcamp.Clean.Repository.Repositories.ProductRepositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//builder.Services.AddDbContext<AppDbContext>(x =>
+//{
+//    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerCleanDb"),
+//        options => { options.MigrationsAssembly(typeof(RepositoryAssembly).Assembly.GetName().Name); });
+//});
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerCleanDb"),
+        options => { options.MigrationsAssembly("Bootcamp.Clean.Repository"); });
+});
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddAutoMapper(typeof(ServiceAssembly).Assembly);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 

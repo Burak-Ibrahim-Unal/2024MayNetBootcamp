@@ -1,4 +1,5 @@
 C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\bin\Debug\net8.0\Bootcamp.Repository.deps.json
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\bin\Debug\net8.0\Bootcamp.Repository.runtimeconfig.json
 C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\bin\Debug\net8.0\Bootcamp.Repository.dll
 C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\bin\Debug\net8.0\Bootcamp.Repository.pdb
 C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\bin\Debug\net8.0\Domain.dll
@@ -13,6 +14,5 @@ C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository
 C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\obj\Debug\net8.0\Bootcamp.Repository.dll
 C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\obj\Debug\net8.0\refint\Bootcamp.Repository.dll
 C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\obj\Debug\net8.0\Bootcamp.Repository.pdb
-C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\obj\Debug\net8.0\ref\Bootcamp.Repository.dll
-C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\bin\Debug\net8.0\Bootcamp.Repository.runtimeconfig.json
 C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\obj\Debug\net8.0\Bootcamp.Repository.genruntimeconfig.cache
+C:\Users\Burak\Desktop\Github\2024MayNetBootcamp\BootcampApi\Bootcamp.Repository\obj\Debug\net8.0\ref\Bootcamp.Repository.dll

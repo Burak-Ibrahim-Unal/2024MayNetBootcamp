@@ -39,11 +39,19 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
 
+        public async Task<ResponseModelDto<ProductDto?>> GetById(int id)
+        {
+            var hasProduct = await _productRepository.GetById(id);
+
+            var productAsDto = mapper.Map<ProductDto>(hasProduct);
+
+            return ResponseModelDto<ProductDto?>.Success(productAsDto);
+        }
+
         public async Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllByPageWithCalculatedTax(
             PriceCalculator priceCalculator, int page, int pageSize)
         {
             var productsList = await _productRepository.GetAllByPageWithCalculatedTax(priceCalculator, page, pageSize);
-
 
             var productListAsDto = mapper.Map<List<ProductDto>>(productsList);
 
@@ -56,7 +64,6 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
             var productList = await _productRepository.GetAllWithCalculatedTax(priceCalculator);
 
             var productListAsDto = mapper.Map<List<ProductDto>>(productList);
-
 
             return ResponseModelDto<ImmutableList<ProductDto>>.Success(productListAsDto.ToImmutableList());
         }

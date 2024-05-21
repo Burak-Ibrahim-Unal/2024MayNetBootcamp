@@ -22,6 +22,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
         Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(int id, PriceCalculator priceCalculator);
         Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllByPageWithCalculatedTax(
             PriceCalculator priceCalculator, int page, int pageSize);
-
+        Task<ResponseModelDto<ProductDto?>> GetById(int id);
+        Task<bool> HasExist(int id);
     }
 }

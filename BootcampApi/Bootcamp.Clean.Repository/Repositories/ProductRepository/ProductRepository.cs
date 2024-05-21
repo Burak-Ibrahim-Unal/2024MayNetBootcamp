@@ -59,6 +59,18 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
             return ResponseModelDto<ImmutableList<ProductDto>>.Success(productListAsDto.ToImmutableList());
         }
 
+        public async Task<ResponseModelDto<ProductDto?>> GetById(int id)
+        {
+            var product = await context.Products.FindAsync(id);
+            if (product is null)
+                return ResponseModelDto<ProductDto?>.Fail("Not found");
+
+            var productAsDto = _mapper.Map<ProductDto>(product);
+
+            return ResponseModelDto<ProductDto?>.Success(productAsDto);
+
+        }
+
         public async Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(int id, PriceCalculator priceCalculator)
         {
             var hasProduct = await context.Products.FindAsync(id);
@@ -66,6 +78,11 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
             var productAsDto = _mapper.Map<ProductDto>(hasProduct);
 
             return ResponseModelDto<ProductDto?>.Success(productAsDto);
+        }
+
+        public async Task<bool> HasExist(int id)
+        {
+            return await context.Products.AnyAsync(x => x.Id == id);
         }
 
         public async Task<ResponseModelDto<NoContent>> Update(int productId, ProductUpdateRequestDto request)
