@@ -66,12 +66,6 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
         {
             var hasProduct = await _productRepository.GetByIdWithCalculatedTax(id, priceCalculator);
 
-            //if (hasProduct is null)
-            //{
-            //    return ResponseModelDto<ProductDto?>.Fail("Ürün bulunamadı", HttpStatusCode.NotFound);
-            //}
-
-
             var productAsDto = mapper.Map<ProductDto>(hasProduct);
 
             return ResponseModelDto<ProductDto?>.Success(productAsDto);
