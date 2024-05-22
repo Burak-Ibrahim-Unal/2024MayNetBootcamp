@@ -19,12 +19,11 @@ using System.Xml.Linq;
 
 namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
 {
-    public class ProductRepository(AppDbContext context, IUnitOfWork unitOfWork, IMapper _mapper) : IProductRepository
+    public class ProductRepository(AppDbContext context) : IProductRepository
     {
         public async Task<Guid> Create(Product product)
         {
             await context.Products.AddAsync(product);
-            await unitOfWork.CommitAsync();
 
             return product.Id;
         }
@@ -35,46 +34,35 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
 
             await Task.Run(() => context.Products.Remove(removeToProduct!));
             //context.Products.Remove(removeToProduct!);
-            await unitOfWork.CommitAsync();
         }
 
-        public async Task<List<ProductDto>> GetAllByPageWithCalculatedTax(PriceCalculator priceCalculator, int page, int pageSize)
+        public async Task<List<Product>> GetAllByPageWithCalculatedTax(PriceCalculator priceCalculator, int page, int pageSize)
         {
             var productsList = await context.Products.AsQueryable().AsNoTracking().Skip(page - 1).Take(pageSize).ToListAsync();
 
-            var productListAsDto = _mapper.Map<List<ProductDto>>(productsList);
-
-            return productListAsDto;
+            return productsList;
         }
 
-        public async Task<List<ProductDto>> GetAllWithCalculatedTax(PriceCalculator priceCalculator)
+        public async Task<List<Product>> GetAllWithCalculatedTax(PriceCalculator priceCalculator)
         {
             var productList = await context.Products.AsQueryable().AsNoTracking().ToListAsync();
 
-            var productListAsDto = _mapper.Map<List<ProductDto>>(productList);
-
-            return productListAsDto;
+            return productList;
         }
 
-        public async Task<ProductDto?> GetById(Guid id)
+        public async Task<Product?> GetById(Guid id)
         {
             var product = await context.Products.FindAsync(id);
-            //if (product is null)
-            //    return ResponseModelDto<ProductDto?>.Fail("Not found");
 
-            var productAsDto = _mapper.Map<ProductDto>(product);
-
-            return productAsDto;
+            return product;
 
         }
 
-        public async Task<ProductDto?> GetByIdWithCalculatedTax(Guid id, PriceCalculator priceCalculator)
+        public async Task<Product?> GetByIdWithCalculatedTax(Guid id, PriceCalculator priceCalculator)
         {
-            var hasProduct = await context.Products.FindAsync(id);
+            var product = await context.Products.FindAsync(id);
 
-            var productAsDto = _mapper.Map<ProductDto>(hasProduct);
-
-            return productAsDto;
+            return product;
         }
 
         public async Task<bool> HasExist(Guid id)
@@ -84,26 +72,22 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
 
         public async Task Update(Guid productId, ProductUpdateRequestDto request)
         {
-            var hasProduct = await context.Products.FindAsync(productId);
+            var product = await context.Products.FindAsync(productId);
 
-            hasProduct!.Name = request.Name;
-            hasProduct.Price = request.Price;
+            product!.Name = request.Name;
+            product.Price = request.Price;
 
-            await Task.Run(() => context.Products.Update(hasProduct));
+            await Task.Run(() => context.Products.Update(product));
             //context.Products.Update(hasProduct);
-
-            await unitOfWork.CommitAsync();
         }
 
         public async Task UpdateProductName(Guid id, string name)
         {
-            var hasProduct = await context.Products.FindAsync(id);
+            var product = await context.Products.FindAsync(id);
 
-            hasProduct!.Name = name;
-            await Task.Run(() => context.Products.Update(hasProduct));
+            product!.Name = name;
+            await Task.Run(() => context.Products.Update(product));
             //context.Products.Update(hasProduct);
-
-            await unitOfWork.CommitAsync();
         }
     }
 }

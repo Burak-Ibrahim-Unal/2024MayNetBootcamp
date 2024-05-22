@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bootcamp.Clean.Repository.Repositories
+namespace Bootcamp.Clean.ApplicationService
 {
     public interface IUnitOfWork
     {
-        int Commit();
         Task<int> CommitAsync();
+        void BeginTransaction();
+        Task? TransactionCommitAsync();
+        Task? TransactionRollbackAsync();
     }
 }

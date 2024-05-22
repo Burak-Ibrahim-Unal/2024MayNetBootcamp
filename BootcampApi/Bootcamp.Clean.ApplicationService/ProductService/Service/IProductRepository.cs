@@ -19,11 +19,11 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
         Task UpdateProductName(Guid id, string name);
 
         Task Delete(Guid id);
-        Task<List<ProductDto>> GetAllWithCalculatedTax(PriceCalculator priceCalculator);
-        Task<ProductDto?> GetByIdWithCalculatedTax(Guid id, PriceCalculator priceCalculator);
-        Task<List<ProductDto>> GetAllByPageWithCalculatedTax(
+        Task<List<Product>> GetAllWithCalculatedTax(PriceCalculator priceCalculator);
+        Task<Product?> GetByIdWithCalculatedTax(Guid id, PriceCalculator priceCalculator);
+        Task<List<Product>> GetAllByPageWithCalculatedTax(
             PriceCalculator priceCalculator, int page, int pageSize);
-        Task<ProductDto?> GetById(Guid id);
+        Task<Product?> GetById(Guid id);
         Task<bool> HasExist(Guid id);
     }
 }

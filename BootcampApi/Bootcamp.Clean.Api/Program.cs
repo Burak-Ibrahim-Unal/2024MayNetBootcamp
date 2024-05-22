@@ -43,7 +43,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ProductService>();
 
-builder.Services.AddSingleton<IRedisCacheService, RedisCacheService>(options =>
+builder.Services.AddSingleton<ICustomCacheService, RedisCacheService>(options =>
 {
     return new RedisCacheService(builder.Configuration.GetConnectionString("Redis")!);
 });
