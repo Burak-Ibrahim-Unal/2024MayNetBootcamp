@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Bootcamp.Clean.ApplicationService.Interfaces;
 using Bootcamp.Clean.ApplicationService.ProductService.DTOs;
 using Bootcamp.Clean.ApplicationService.ProductService.Helpers;
-using Bootcamp.Clean.ApplicationService.ProductService.Service;
 using Bootcamp.Clean.ApplicationService.SharedDto;
 using Bootcamp.Clean.Domain.Entities;
 using Bootcamp.Clean.Repository.Context;

@@ -1,5 +1,5 @@
-﻿using Bootcamp.Clean.ApplicationService.ProductService.DTOs;
-using Bootcamp.Clean.ApplicationService.ProductService.Service;
+﻿using Bootcamp.Clean.ApplicationService.Interfaces;
+using Bootcamp.Clean.ApplicationService.ProductService.DTOs;
 using Bootcamp.Clean.ApplicationService.SharedDto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;

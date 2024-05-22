@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bootcamp.Clean.ApplicationService.Interfaces;
 using Bootcamp.Clean.ApplicationService.ProductService.DTOs;
 using Bootcamp.Clean.ApplicationService.ProductService.Helpers;
 using Bootcamp.Clean.ApplicationService.SharedDto;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
-    public class ProductService(IProductRepository _productRepository)
+    public class ProductService(IProductRepository _productRepository, ICacheService cacheService)
     {
         public async Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request)
         {
@@ -27,61 +28,61 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
                 Created = DateTime.Now
             };
 
-            await _productRepository.Create(newProduct);
+            var result =await _productRepository.Create(newProduct);
 
-            return ResponseModelDto<Guid>.Success(newProduct.Id, HttpStatusCode.Created);
+            return result;
         }
 
         public async Task<ResponseModelDto<NoContent>> Delete(Guid id)
         {
-            await _productRepository.Delete(id);
+            var result = await _productRepository.Delete(id);
 
-            return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
+            return result;
         }
 
         public async Task<ResponseModelDto<ProductDto?>> GetById(Guid id)
         {
-            var product = await _productRepository.GetById(id);
+            var result = await _productRepository.GetById(id);
 
-            return product;
+            return result;
         }
 
         public async Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllByPageWithCalculatedTax(
             PriceCalculator priceCalculator, int page, int pageSize)
         {
-            var productsList = await _productRepository.GetAllByPageWithCalculatedTax(priceCalculator, page, pageSize);
+            var result = await _productRepository.GetAllByPageWithCalculatedTax(priceCalculator, page, pageSize);
 
-            return productsList;
+            return result;
         }
 
         public async Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllWithCalculatedTax(
             PriceCalculator priceCalculator)
         {
-            var productList = await _productRepository.GetAllWithCalculatedTax(priceCalculator);
+            var result = await _productRepository.GetAllWithCalculatedTax(priceCalculator);
 
-            return productList;
+            return result;
         }
 
         public async Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(Guid id,
             PriceCalculator priceCalculator)
         {
-            var product = await _productRepository.GetByIdWithCalculatedTax(id, priceCalculator);
+            var result = await _productRepository.GetByIdWithCalculatedTax(id, priceCalculator);
 
-            return product;
+            return result;
         }
 
         public async Task<ResponseModelDto<NoContent>> Update(Guid productId, ProductUpdateRequestDto request)
         {
-            await _productRepository.Update(productId, request);
+            var result = await _productRepository.Update(productId, request);
 
-            return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
+            return result;
         }
 
         public async Task<ResponseModelDto<NoContent>> UpdateProductName(Guid id, string name)
         {
-            await _productRepository.UpdateProductName(id, name);
+            var result = await _productRepository.UpdateProductName(id, name);
 
-            return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
+            return result;
         }
     }
 }

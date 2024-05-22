@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bootcamp.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a42f3cd9b1c09d1f4e65609a133e7bb206d0264c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebdc5fed07e63910ddaaa27d6f392999e7e07ed9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bootcamp.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bootcamp.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

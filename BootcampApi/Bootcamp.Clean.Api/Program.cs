@@ -1,4 +1,5 @@
 using Bootcamp.Clean.ApplicationService;
+using Bootcamp.Clean.ApplicationService.Interfaces;
 using Bootcamp.Clean.ApplicationService.ProductService;
 using Bootcamp.Clean.ApplicationService.ProductService.Helpers;
 using Bootcamp.Clean.ApplicationService.ProductService.Service;

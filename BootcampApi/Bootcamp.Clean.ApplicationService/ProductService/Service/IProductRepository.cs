@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bootcamp.Clean.ApplicationService.ProductService.Service
+namespace Bootcamp.Clean.ApplicationService.Interfaces
 {
     public interface IProductRepository
     {
