@@ -32,3 +32,5 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+BootcampApi/.vs/BootcampApi/DesignTimeBuild/.dtbcache.v2
+BootcampApi/.vs/BootcampApi/v17/.suo
