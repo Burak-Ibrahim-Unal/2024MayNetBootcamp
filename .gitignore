@@ -34,3 +34,12 @@ msbuild.wrn
 .vs/
 BootcampApi/.vs/BootcampApi/DesignTimeBuild/.dtbcache.v2
 BootcampApi/.vs/BootcampApi/v17/.suo
+BootcampApi/Domain/obj/Debug/net8.0/refint/Domain.dll
+BootcampApi/Domain/obj/Debug/net8.0/ref/Domain.dll
+BootcampApi/Domain/obj/Debug/net8.0/Domain.sourcelink.json
+BootcampApi/Domain/obj/Debug/net8.0/Domain.pdb
+BootcampApi/Domain/obj/Debug/net8.0/Domain.dll
+BootcampApi/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
+BootcampApi/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
+BootcampApi/Domain/bin/Debug/net8.0/Domain.pdb
+BootcampApi/Domain/bin/Debug/net8.0/Domain.dll
