@@ -4,6 +4,7 @@ using Bootcamp.Clean.ApplicationService.ProductService;
 using Bootcamp.Clean.ApplicationService.ProductService.Helpers;
 using Bootcamp.Clean.ApplicationService.ProductService.Service;
 using Bootcamp.Clean.Cache.InMemoryCache;
+using Bootcamp.Clean.Cache.RedisCache;
 using Bootcamp.Clean.Repository;
 using Bootcamp.Clean.Repository.Context;
 using Bootcamp.Clean.Repository.Repositories;
@@ -28,6 +29,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         options => { options.MigrationsAssembly("Bootcamp.Clean.Repository"); });
 });
 
+
 //builder.Services.Configure<ApiBehaviorOptions>(x => { x.SuppressModelStateInvalidFilter = true; });
 builder.Services.AddScoped<NotFoundFilter>();
 builder.Services.AddSingleton<PriceCalculator>();
@@ -40,6 +42,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ProductService>();
+
+builder.Services.AddSingleton<IRedisCacheService, RedisCacheService>(options =>
+{
+    return new RedisCacheService(builder.Configuration.GetConnectionString("Redis")!);
+});
 builder.Services.AddScoped<ICacheService, InMemoryCacheService>();
 builder.Services.AddMemoryCache();
 

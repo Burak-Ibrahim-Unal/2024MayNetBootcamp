@@ -10,12 +10,32 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
-    public class ProductService(IProductRepository _productRepository, ICacheService cacheService)
+    public class ProductService(IProductRepository _productRepository, ICacheService _cacheService, IRedisCacheService _redisCacheService)
     {
+        private const string _productsRedisKey = "products";
+
+        public async Task<ResponseModelDto<List<ProductDto>>> GetAllWithCalculatedTax(PriceCalculator priceCalculator)
+        {
+            if (_redisCacheService.RedisDatabase.KeyExists(_productsRedisKey))
+            {
+                var productListFromRedisAsJson = _redisCacheService.RedisDatabase.StringGet(_productsRedisKey);
+                var productListFromRedis = JsonSerializer.Deserialize<List<ProductDto>>(productListFromRedisAsJson!);
+                return ResponseModelDto<List<ProductDto>>.Success(productListFromRedis!);
+            }
+
+            var productList = await _productRepository.GetAllWithCalculatedTax(priceCalculator);
+
+            var productListAsJson = JsonSerializer.Serialize(productList);
+            _redisCacheService.RedisDatabase.StringSet(_productsRedisKey, productListAsJson);
+
+            return ResponseModelDto<List<ProductDto>>.Success(productList);
+        }
+
         public async Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request)
         {
             var newProduct = new Product
@@ -43,13 +63,13 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
         public async Task<ResponseModelDto<ProductDto?>> GetById(Guid id)
         {
             //cache aside design pattern
-            var productFromCache = cacheService.Get<ProductDto?>($"product:{id}");
+            var productFromCache = _cacheService.Get<ProductDto?>($"product:{id}");
 
             if (productFromCache is not null)
                 return ResponseModelDto<ProductDto>.Success(productFromCache);
 
             var product = await _productRepository.GetById(id);
-            cacheService.Add($"product:{id}", new ProductDto(product.Id, product.Name, product.Price, product.Stock, product.Barcode, product.Created));
+            _cacheService.Add($"product:{id}", new ProductDto(product.Id, product.Name, product.Price, product.Stock, product.Barcode, product.Created));
 
             return ResponseModelDto<ProductDto>.Success(product);
         }
@@ -60,14 +80,6 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
             var productsList = await _productRepository.GetAllByPageWithCalculatedTax(priceCalculator, page, pageSize);
 
             return ResponseModelDto<List<ProductDto>>.Success(productsList);
-        }
-
-        public async Task<ResponseModelDto<List<ProductDto>>> GetAllWithCalculatedTax(
-            PriceCalculator priceCalculator)
-        {
-            var productList = await _productRepository.GetAllWithCalculatedTax(priceCalculator);
-
-            return ResponseModelDto<List<ProductDto>>.Success(productList);
         }
 
         public async Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(Guid id,
