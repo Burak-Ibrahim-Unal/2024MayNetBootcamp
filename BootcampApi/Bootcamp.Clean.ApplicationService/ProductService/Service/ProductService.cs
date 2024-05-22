@@ -72,7 +72,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 
         public async Task<ResponseModelDto<NoContent>> Update(Guid productId, ProductUpdateRequestDto request)
         {
-            var hasProduct = await _productRepository.Update(productId, request);
+            await _productRepository.Update(productId, request);
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
