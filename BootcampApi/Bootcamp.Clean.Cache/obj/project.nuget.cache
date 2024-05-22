@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "2CzJZDzIQyv4Cat2I+fOdxsSOW0KOq3djWGhXgXjjM37X3a0jJG3JWPZ2Eon4pWpplJDQatUgemNUlM/TFMqzQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Cache\\Bootcamp.Clean.Cache.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Burak\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\Burak\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
+    "C:\\Users\\Burak\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Burak\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\Burak\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\Burak\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

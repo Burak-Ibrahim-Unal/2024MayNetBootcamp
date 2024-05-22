@@ -3,6 +3,7 @@ using Bootcamp.Clean.ApplicationService.Interfaces;
 using Bootcamp.Clean.ApplicationService.ProductService;
 using Bootcamp.Clean.ApplicationService.ProductService.Helpers;
 using Bootcamp.Clean.ApplicationService.ProductService.Service;
+using Bootcamp.Clean.Cache.InMemoryCache;
 using Bootcamp.Clean.Repository;
 using Bootcamp.Clean.Repository.Context;
 using Bootcamp.Clean.Repository.Repositories;
@@ -39,6 +40,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ICacheService, InMemoryCacheService>();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

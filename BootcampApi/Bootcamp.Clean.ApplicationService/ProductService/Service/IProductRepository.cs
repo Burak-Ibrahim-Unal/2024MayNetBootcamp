@@ -9,21 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bootcamp.Clean.ApplicationService.Interfaces
+namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
     public interface IProductRepository
     {
-        Task<ResponseModelDto<Guid>> Create(Product request);
-        Task<ResponseModelDto<NoContent>> Update(Guid productId, ProductUpdateRequestDto request);
+        Task<Guid> Create(Product request);
+        Task Update(Guid productId, ProductUpdateRequestDto request);
 
-        Task<ResponseModelDto<NoContent>> UpdateProductName(Guid id, string name);
+        Task UpdateProductName(Guid id, string name);
 
-        Task<ResponseModelDto<NoContent>> Delete(Guid id);
-        Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllWithCalculatedTax(PriceCalculator priceCalculator);
-        Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(Guid id, PriceCalculator priceCalculator);
-        Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllByPageWithCalculatedTax(
+        Task Delete(Guid id);
+        Task<List<ProductDto>> GetAllWithCalculatedTax(PriceCalculator priceCalculator);
+        Task<ProductDto?> GetByIdWithCalculatedTax(Guid id, PriceCalculator priceCalculator);
+        Task<List<ProductDto>> GetAllByPageWithCalculatedTax(
             PriceCalculator priceCalculator, int page, int pageSize);
-        Task<ResponseModelDto<ProductDto?>> GetById(Guid id);
+        Task<ProductDto?> GetById(Guid id);
         Task<bool> HasExist(Guid id);
     }
 }

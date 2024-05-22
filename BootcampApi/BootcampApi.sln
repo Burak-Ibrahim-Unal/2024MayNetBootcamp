@@ -15,13 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NLayer", "NLayer", "{0BA5B1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArc", "CleanArc", "{2AACD46B-4C26-4C48-BC7B-BBF39F2778F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Clean.Domain", "Bootcamp.Clean.Domain\Bootcamp.Clean.Domain.csproj", "{FA3E3979-B87B-4737-9C3D-469E878A232B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.Clean.Domain", "Bootcamp.Clean.Domain\Bootcamp.Clean.Domain.csproj", "{FA3E3979-B87B-4737-9C3D-469E878A232B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Clean.ApplicationService", "Bootcamp.Clean.ApplicationService\Bootcamp.Clean.ApplicationService.csproj", "{4DA73E13-9F87-4993-B839-4EC6512CBB13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.Clean.ApplicationService", "Bootcamp.Clean.ApplicationService\Bootcamp.Clean.ApplicationService.csproj", "{4DA73E13-9F87-4993-B839-4EC6512CBB13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Clean.Repository", "Bootcamp.Clean.Repository\Bootcamp.Clean.Repository.csproj", "{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.Clean.Repository", "Bootcamp.Clean.Repository\Bootcamp.Clean.Repository.csproj", "{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Clean.Api", "Bootcamp.Clean.Api\Bootcamp.Clean.Api.csproj", "{E5A88429-857D-45EE-9696-7372461A6622}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.Clean.Api", "Bootcamp.Clean.Api\Bootcamp.Clean.Api.csproj", "{E5A88429-857D-45EE-9696-7372461A6622}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Clean.Cache", "Bootcamp.Clean.Cache\Bootcamp.Clean.Cache.csproj", "{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{E5A88429-857D-45EE-9696-7372461A6622}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5A88429-857D-45EE-9696-7372461A6622}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5A88429-857D-45EE-9696-7372461A6622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{4DA73E13-9F87-4993-B839-4EC6512CBB13} = {2AACD46B-4C26-4C48-BC7B-BBF39F2778F6}
 		{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6} = {2AACD46B-4C26-4C48-BC7B-BBF39F2778F6}
 		{E5A88429-857D-45EE-9696-7372461A6622} = {2AACD46B-4C26-4C48-BC7B-BBF39F2778F6}
+		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE} = {2AACD46B-4C26-4C48-BC7B-BBF39F2778F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79AEA9C0-554E-43C4-803E-7E24F57CBB89}

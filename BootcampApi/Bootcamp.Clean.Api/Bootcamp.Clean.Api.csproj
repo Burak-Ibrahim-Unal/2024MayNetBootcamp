@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bootcamp.Clean.ApplicationService\Bootcamp.Clean.ApplicationService.csproj" />
+    <ProjectReference Include="..\Bootcamp.Clean.Cache\Bootcamp.Clean.Cache.csproj" />
     <ProjectReference Include="..\Bootcamp.Clean.Repository\Bootcamp.Clean.Repository.csproj" />
   </ItemGroup>
 

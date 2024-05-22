@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.ApplicationService.Interfaces
 {
-    internal class ICacheService
+    public interface ICacheService
     {
+        void Add<T>(string key, T value);
+        T? Get<T>(string key);
+        void Remove(string key);
     }
 }

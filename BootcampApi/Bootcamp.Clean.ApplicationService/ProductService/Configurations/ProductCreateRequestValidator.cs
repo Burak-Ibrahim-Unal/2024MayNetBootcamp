@@ -1,5 +1,5 @@
-﻿using Bootcamp.Clean.ApplicationService.Interfaces;
-using Bootcamp.Clean.ApplicationService.ProductService.DTOs;
+﻿using Bootcamp.Clean.ApplicationService.ProductService.DTOs;
+using Bootcamp.Clean.ApplicationService.ProductService.Service;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
