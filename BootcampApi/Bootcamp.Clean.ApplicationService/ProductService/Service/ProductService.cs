@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
-    public class ProductService(IProductRepository _productRepository, IMapper mapper)
+    public class ProductService(IProductRepository _productRepository)
     {
         public async Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request)
         {
@@ -27,26 +27,23 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
                 Created = DateTime.Now
             };
 
-            var mappedProduct = mapper.Map<ProductCreateRequestDto>(newProduct);
-            await _productRepository.Create(mappedProduct);
+            await _productRepository.Create(newProduct);
 
             return ResponseModelDto<Guid>.Success(newProduct.Id, HttpStatusCode.Created);
         }
 
-        public async Task<ResponseModelDto<NoContent>> Delete(int id)
+        public async Task<ResponseModelDto<NoContent>> Delete(Guid id)
         {
             await _productRepository.Delete(id);
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
 
-        public async Task<ResponseModelDto<ProductDto?>> GetById(int id)
+        public async Task<ResponseModelDto<ProductDto?>> GetById(Guid id)
         {
-            var hasProduct = await _productRepository.GetById(id);
+            var product = await _productRepository.GetById(id);
 
-            var productAsDto = mapper.Map<ProductDto>(hasProduct);
-
-            return ResponseModelDto<ProductDto?>.Success(productAsDto);
+            return product;
         }
 
         public async Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllByPageWithCalculatedTax(
@@ -54,9 +51,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
         {
             var productsList = await _productRepository.GetAllByPageWithCalculatedTax(priceCalculator, page, pageSize);
 
-            var productListAsDto = mapper.Map<List<ProductDto>>(productsList);
-
-            return ResponseModelDto<ImmutableList<ProductDto>>.Success(productListAsDto.ToImmutableList());
+            return productsList;
         }
 
         public async Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllWithCalculatedTax(
@@ -64,29 +59,25 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
         {
             var productList = await _productRepository.GetAllWithCalculatedTax(priceCalculator);
 
-            var productListAsDto = mapper.Map<List<ProductDto>>(productList);
-
-            return ResponseModelDto<ImmutableList<ProductDto>>.Success(productListAsDto.ToImmutableList());
+            return productList;
         }
 
-        public async Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(int id,
+        public async Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(Guid id,
             PriceCalculator priceCalculator)
         {
-            var hasProduct = await _productRepository.GetByIdWithCalculatedTax(id, priceCalculator);
+            var product = await _productRepository.GetByIdWithCalculatedTax(id, priceCalculator);
 
-            var productAsDto = mapper.Map<ProductDto>(hasProduct);
-
-            return ResponseModelDto<ProductDto?>.Success(productAsDto);
+            return product;
         }
 
-        public async Task<ResponseModelDto<NoContent>> Update(int productId, ProductUpdateRequestDto request)
+        public async Task<ResponseModelDto<NoContent>> Update(Guid productId, ProductUpdateRequestDto request)
         {
             var hasProduct = await _productRepository.Update(productId, request);
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
 
-        public async Task<ResponseModelDto<NoContent>> UpdateProductName(int id, string name)
+        public async Task<ResponseModelDto<NoContent>> UpdateProductName(Guid id, string name)
         {
             await _productRepository.UpdateProductName(id, name);
 

@@ -1,6 +1,7 @@
 ﻿using Bootcamp.Clean.ApplicationService.ProductService.DTOs;
 using Bootcamp.Clean.ApplicationService.ProductService.Helpers;
 using Bootcamp.Clean.ApplicationService.SharedDto;
+using Bootcamp.Clean.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -12,17 +13,17 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
     public interface IProductRepository
     {
-        Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request);
-        Task<ResponseModelDto<NoContent>> Update(int productId, ProductUpdateRequestDto request);
+        Task<ResponseModelDto<Guid>> Create(Product request);
+        Task<ResponseModelDto<NoContent>> Update(Guid productId, ProductUpdateRequestDto request);
 
-        Task<ResponseModelDto<NoContent>> UpdateProductName(int id, string name);
+        Task<ResponseModelDto<NoContent>> UpdateProductName(Guid id, string name);
 
-        Task<ResponseModelDto<NoContent>> Delete(int id);
+        Task<ResponseModelDto<NoContent>> Delete(Guid id);
         Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllWithCalculatedTax(PriceCalculator priceCalculator);
-        Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(int id, PriceCalculator priceCalculator);
+        Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(Guid id, PriceCalculator priceCalculator);
         Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllByPageWithCalculatedTax(
             PriceCalculator priceCalculator, int page, int pageSize);
-        Task<ResponseModelDto<ProductDto?>> GetById(int id);
+        Task<ResponseModelDto<ProductDto?>> GetById(Guid id);
         Task<bool> HasExist(Guid id);
     }
 }

@@ -26,16 +26,16 @@ namespace Bootcamp.Clean.ApplicationService.ProductService
             }
 
 
-            if (productId == default && !Guid.TryParse(new Guid(productIdFromAction), out productId))
-            {
-                return;
-            }
+            //if (productId == default && !Guid.TryParse(new Guid(productIdFromAction!), out productId))
+            //{
+            //    return;
+            //}
 
-            var hasProduct = productRepository.HasExist(productId).Result;
+            var hasProduct = productRepository.HasExist(new Guid(productIdFromAction.ToString()!)).Result;
 
             if (!hasProduct)
             {
-                var errorMessage = $"There is no product with id: {productId}";
+                var errorMessage = $"There is no product with id: {productIdFromAction}";
 
                 var responseModel = ResponseModelDto<NoContent>.Fail(errorMessage);
                 context.Result = new NotFoundObjectResult(responseModel);

@@ -31,10 +31,10 @@ namespace Bootcamp.Clean.Api.Controllers
         [MyResourceFilter]
         [MyActionFilter]
         [MyResultFilter]
-        [HttpGet("{productId:int}")]
-        public async Task<IActionResult> GetById(int productId, [FromServices] PriceCalculator priceCalculator)
+        [HttpGet("{productId:Guid}")]
+        public async Task<IActionResult> GetById(Guid productId)
         {
-            return CreateActionResult(await _productService.GetByIdWithCalculatedTax(productId, priceCalculator));
+            return CreateActionResult(await _productService.GetById(productId));
         }
 
         //[ServiceFilter(typeof(NotFoundFilter))]
@@ -57,16 +57,16 @@ namespace Bootcamp.Clean.Api.Controllers
         }
 
         [ServiceFilter(typeof(NotFoundFilter))]
-        [HttpDelete("{productId:int}")]
-        public async Task<IActionResult> Delete(int productId)
+        [HttpDelete("{productId:Guid}")]
+        public async Task<IActionResult> Delete(Guid productId)
         {
             return CreateActionResult(await _productService.Delete(productId));
         }
 
         // PUT localhost/api/products/10
         [ServiceFilter(typeof(NotFoundFilter))]
-        [HttpPut("{productId:int}")]
-        public async Task<IActionResult> Update(int productId, ProductUpdateRequestDto request)
+        [HttpPut("{productId:Guid}")]
+        public async Task<IActionResult> Update(Guid productId, ProductUpdateRequestDto request)
         {
             return CreateActionResult(await _productService.Update(productId, request));
         }

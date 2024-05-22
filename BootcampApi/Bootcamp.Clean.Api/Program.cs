@@ -1,9 +1,12 @@
 using Bootcamp.Clean.ApplicationService;
+using Bootcamp.Clean.ApplicationService.ProductService;
+using Bootcamp.Clean.ApplicationService.ProductService.Helpers;
 using Bootcamp.Clean.ApplicationService.ProductService.Service;
 using Bootcamp.Clean.Repository;
 using Bootcamp.Clean.Repository.Context;
 using Bootcamp.Clean.Repository.Repositories;
 using Bootcamp.Clean.Repository.Repositories.ProductRepositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -22,6 +25,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerCleanDb"),
         options => { options.MigrationsAssembly("Bootcamp.Clean.Repository"); });
 });
+
+//builder.Services.Configure<ApiBehaviorOptions>(x => { x.SuppressModelStateInvalidFilter = true; });
+builder.Services.AddScoped<NotFoundFilter>();
+builder.Services.AddSingleton<PriceCalculator>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddAutoMapper(typeof(ServiceAssembly).Assembly);

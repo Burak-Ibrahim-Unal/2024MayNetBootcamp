@@ -20,17 +20,15 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
 {
     public class ProductRepository(AppDbContext context, IUnitOfWork unitOfWork, IMapper _mapper) : IProductRepository
     {
-        public async Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request)
+        public async Task<ResponseModelDto<Guid>> Create(Product product)
         {
-            var mappedProduct = _mapper.Map<Product>(request);
-
-            await context.Products.AddAsync(mappedProduct);
+            await context.Products.AddAsync(product);
             await unitOfWork.CommitAsync();
 
-            return ResponseModelDto<Guid>.Success(mappedProduct.Id, HttpStatusCode.Created);
+            return ResponseModelDto<Guid>.Success(product.Id, HttpStatusCode.Created);
         }
 
-        public async Task<ResponseModelDto<NoContent>> Delete(int id)
+        public async Task<ResponseModelDto<NoContent>> Delete(Guid id)
         {
             var removeToProduct = await context.Products.FindAsync(id);
 
@@ -43,7 +41,7 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
 
         public async Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllByPageWithCalculatedTax(PriceCalculator priceCalculator, int page, int pageSize)
         {
-            var productsList = await context.Products.AsQueryable().AsNoTracking().Skip(page).Take(pageSize).ToListAsync();
+            var productsList = await context.Products.AsQueryable().AsNoTracking().Skip(page - 1).Take(pageSize).ToListAsync();
 
             var productListAsDto = _mapper.Map<List<ProductDto>>(productsList);
 
@@ -59,11 +57,11 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
             return ResponseModelDto<ImmutableList<ProductDto>>.Success(productListAsDto.ToImmutableList());
         }
 
-        public async Task<ResponseModelDto<ProductDto?>> GetById(int id)
+        public async Task<ResponseModelDto<ProductDto?>> GetById(Guid id)
         {
             var product = await context.Products.FindAsync(id);
-            if (product is null)
-                return ResponseModelDto<ProductDto?>.Fail("Not found");
+            //if (product is null)
+            //    return ResponseModelDto<ProductDto?>.Fail("Not found");
 
             var productAsDto = _mapper.Map<ProductDto>(product);
 
@@ -71,7 +69,7 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
 
         }
 
-        public async Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(int id, PriceCalculator priceCalculator)
+        public async Task<ResponseModelDto<ProductDto?>> GetByIdWithCalculatedTax(Guid id, PriceCalculator priceCalculator)
         {
             var hasProduct = await context.Products.FindAsync(id);
 
@@ -85,7 +83,7 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
             return await context.Products.AnyAsync(x => x.Id == id);
         }
 
-        public async Task<ResponseModelDto<NoContent>> Update(int productId, ProductUpdateRequestDto request)
+        public async Task<ResponseModelDto<NoContent>> Update(Guid productId, ProductUpdateRequestDto request)
         {
             var hasProduct = await context.Products.FindAsync(productId);
 
@@ -99,7 +97,7 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
 
-        public async Task<ResponseModelDto<NoContent>> UpdateProductName(int id, string name)
+        public async Task<ResponseModelDto<NoContent>> UpdateProductName(Guid id, string name)
         {
             var hasProduct = await context.Products.FindAsync(id);
 

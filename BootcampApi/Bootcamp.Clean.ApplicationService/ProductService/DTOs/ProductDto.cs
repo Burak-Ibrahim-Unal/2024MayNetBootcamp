@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.ApplicationService.ProductService.DTOs
 {
-    public record ProductDto(Guid Id, string Name, decimal Price,string Barcode, string Created);
+    public record ProductDto(Guid Id, string Name, decimal Price, int Stock, string Barcode, string Created);
 }
