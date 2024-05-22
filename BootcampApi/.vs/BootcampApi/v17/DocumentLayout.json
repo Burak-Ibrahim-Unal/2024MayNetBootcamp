@@ -3,12 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6}|Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.repository\\migrations\\20240521174655_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6}|Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj|solutionrelative:bootcamp.clean.repository\\migrations\\20240521174655_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6}|Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.repository\\repositories\\productrepository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6}|Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj|solutionrelative:bootcamp.clean.repository\\repositories\\productrepository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.applicationservice\\productservice\\service\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|solutionrelative:bootcamp.clean.applicationservice\\productservice\\service\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.applicationservice\\productservice\\service\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|solutionrelative:bootcamp.clean.applicationservice\\productservice\\service\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA3E3979-B87B-4737-9C3D-469E878A232B}|Bootcamp.Clean.Domain\\Bootcamp.Clean.Domain.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA3E3979-B87B-4737-9C3D-469E878A232B}|Bootcamp.Clean.Domain\\Bootcamp.Clean.Domain.csproj|solutionrelative:bootcamp.clean.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA3E3979-B87B-4737-9C3D-469E878A232B}|Bootcamp.Clean.Domain\\Bootcamp.Clean.Domain.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA3E3979-B87B-4737-9C3D-469E878A232B}|Bootcamp.Clean.Domain\\Bootcamp.Clean.Domain.csproj|solutionrelative:bootcamp.clean.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA3E3979-B87B-4737-9C3D-469E878A232B}|Bootcamp.Clean.Domain\\Bootcamp.Clean.Domain.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.domain\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA3E3979-B87B-4737-9C3D-469E878A232B}|Bootcamp.Clean.Domain\\Bootcamp.Clean.Domain.csproj|solutionrelative:bootcamp.clean.domain\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.applicationservice\\productservice\\dtos\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|solutionrelative:bootcamp.clean.applicationservice\\productservice\\dtos\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.applicationservice\\productservice\\dtos\\productcreaterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|solutionrelative:bootcamp.clean.applicationservice\\productservice\\dtos\\productcreaterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5A88429-857D-45EE-9696-7372461A6622}|Bootcamp.Clean.Api\\Bootcamp.Clean.Api.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5A88429-857D-45EE-9696-7372461A6622}|Bootcamp.Clean.Api\\Bootcamp.Clean.Api.csproj|solutionrelative:bootcamp.clean.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A88429-857D-45EE-9696-7372461A6622}|Bootcamp.Clean.Api\\Bootcamp.Clean.Api.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A88429-857D-45EE-9696-7372461A6622}|Bootcamp.Clean.Api\\Bootcamp.Clean.Api.csproj|solutionrelative:bootcamp.clean.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.applicationservice\\productservice\\configurations\\productserviceext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|solutionrelative:bootcamp.clean.applicationservice\\productservice\\configurations\\productserviceext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.applicationservice\\productservice\\configurations\\productmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|solutionrelative:bootcamp.clean.applicationservice\\productservice\\configurations\\productmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.applicationservice\\productservice\\configurations\\productcreaterequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DA73E13-9F87-4993-B839-4EC6512CBB13}|Bootcamp.Clean.ApplicationService\\Bootcamp.Clean.ApplicationService.csproj|solutionrelative:bootcamp.clean.applicationservice\\productservice\\configurations\\productcreaterequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DEF2D69-0D47-4E65-A93E-8A96AC279396}|Bootcamp.Service\\Bootcamp.Service.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.service\\productservice\\configurations\\productcreaterequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DEF2D69-0D47-4E65-A93E-8A96AC279396}|Bootcamp.Service\\Bootcamp.Service.csproj|solutionrelative:bootcamp.service\\productservice\\configurations\\productcreaterequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5ADA172A-F03F-4DB4-BBAF-AA2027F8404A}|Bootcamp.Repository\\Bootcamp.Repository.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.repository\\migrations\\20240513122857_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +69,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6}|Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.repository\\bootcamp.clean.repository.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6}|Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj|solutionrelative:bootcamp.clean.repository\\bootcamp.clean.repository.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E5A88429-857D-45EE-9696-7372461A6622}|Bootcamp.Clean.Api\\Bootcamp.Clean.Api.csproj|c:\\users\\burak\\desktop\\github\\2024maynetbootcamp\\bootcampapi\\bootcamp.clean.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5A88429-857D-45EE-9696-7372461A6622}|Bootcamp.Clean.Api\\Bootcamp.Clean.Api.csproj|solutionrelative:bootcamp.clean.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,24 +78,182 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20240521174655_Initial.cs",
-              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Repository\\Migrations\\20240521174655_Initial.cs",
-              "RelativeDocumentMoniker": "Bootcamp.Clean.Repository\\Migrations\\20240521174655_Initial.cs",
-              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Repository\\Migrations\\20240521174655_Initial.cs",
-              "RelativeToolTip": "Bootcamp.Clean.Repository\\Migrations\\20240521174655_Initial.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Service\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.ApplicationService\\ProductService\\Service\\IProductRepository.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Service\\IProductRepository.cs",
+              "RelativeToolTip": "Bootcamp.Clean.ApplicationService\\ProductService\\Service\\IProductRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T17:46:56.158Z",
+              "WhenOpened": "2024-05-21T18:15:31.444Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Repository\\Repositories\\ProductRepository\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.Repository\\Repositories\\ProductRepository\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Repository\\Repositories\\ProductRepository\\ProductRepository.cs",
+              "RelativeToolTip": "Bootcamp.Clean.Repository\\Repositories\\ProductRepository\\ProductRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBQAAABkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T18:15:13.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Domain\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.Domain\\Entities\\Category.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Domain\\Entities\\Category.cs",
+              "RelativeToolTip": "Bootcamp.Clean.Domain\\Entities\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T18:11:43.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Domain\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.Domain\\Entities\\Product.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Domain\\Entities\\Product.cs",
+              "RelativeToolTip": "Bootcamp.Clean.Domain\\Entities\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T18:11:36.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Domain\\Entities\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.Domain\\Entities\\BaseEntity.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Domain\\Entities\\BaseEntity.cs",
+              "RelativeToolTip": "Bootcamp.Clean.Domain\\Entities\\BaseEntity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T18:11:34.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductCreateRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\DTOs\\ProductCreateRequestDto.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.ApplicationService\\ProductService\\DTOs\\ProductCreateRequestDto.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\DTOs\\ProductCreateRequestDto.cs",
+              "RelativeToolTip": "Bootcamp.Clean.ApplicationService\\ProductService\\DTOs\\ProductCreateRequestDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T18:06:05.032Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Service\\ProductService.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.ApplicationService\\ProductService\\Service\\ProductService.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Service\\ProductService.cs",
+              "RelativeToolTip": "Bootcamp.Clean.ApplicationService\\ProductService\\Service\\ProductService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwCAAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T18:04:40.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProductServiceExt.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductServiceExt.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductServiceExt.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductServiceExt.cs",
+              "RelativeToolTip": "Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductServiceExt.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T17:59:53.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductMapper.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductMapper.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductMapper.cs",
+              "RelativeToolTip": "Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T17:59:46.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductCreateRequestValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductCreateRequestValidator.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductCreateRequestValidator.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductCreateRequestValidator.cs",
+              "RelativeToolTip": "Bootcamp.Clean.ApplicationService\\ProductService\\Configurations\\ProductCreateRequestValidator.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAUwBMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T17:59:33.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductDto.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\DTOs\\ProductDto.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.ApplicationService\\ProductService\\DTOs\\ProductDto.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.ApplicationService\\ProductService\\DTOs\\ProductDto.cs",
+              "RelativeToolTip": "Bootcamp.Clean.ApplicationService\\ProductService\\DTOs\\ProductDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T17:59:27.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProductCreateRequestValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Service\\ProductService\\Configurations\\ProductCreateRequestValidator.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Service\\ProductService\\Configurations\\ProductCreateRequestValidator.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Service\\ProductService\\Configurations\\ProductCreateRequestValidator.cs",
+              "RelativeToolTip": "Bootcamp.Service\\ProductService\\Configurations\\ProductCreateRequestValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T17:58:53.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Api\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.Api\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Api\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Bootcamp.Clean.Api\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAADwvzgAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T17:30:36.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Api\\Program.cs",
+              "RelativeDocumentMoniker": "Bootcamp.Clean.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Api\\Program.cs",
+              "RelativeToolTip": "Bootcamp.Clean.Api\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T17:30:43.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "20240513122857_initial.cs",
               "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Repository\\Migrations\\20240513122857_initial.cs",
               "RelativeDocumentMoniker": "Bootcamp.Repository\\Migrations\\20240513122857_initial.cs",
@@ -59,12 +261,11 @@
               "RelativeToolTip": "Bootcamp.Repository\\Migrations\\20240513122857_initial.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T17:39:28.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T17:39:28.543Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 15,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\BootcampApi\\Program.cs",
               "RelativeDocumentMoniker": "BootcampApi\\Program.cs",
@@ -72,47 +273,19 @@
               "RelativeToolTip": "BootcampApi\\Program.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAIBJwBgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T17:35:56.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T17:35:56.539Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 16,
               "Title": "Bootcamp.Clean.Repository.csproj",
               "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj",
               "RelativeDocumentMoniker": "Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj",
               "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj",
               "RelativeToolTip": "Bootcamp.Clean.Repository\\Bootcamp.Clean.Repository.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAKAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-21T17:32:13.265Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Api\\Program.cs",
-              "RelativeDocumentMoniker": "Bootcamp.Clean.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Api\\Program.cs",
-              "RelativeToolTip": "Bootcamp.Clean.Api\\Program.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAACAAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T17:30:43.337Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Api\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "Bootcamp.Clean.Api\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\Users\\Burak\\Desktop\\Github\\2024MayNetBootcamp\\BootcampApi\\Bootcamp.Clean.Api\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "Bootcamp.Clean.Api\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAgwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T17:30:36.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T17:32:13.265Z"
             }
           ]
         }

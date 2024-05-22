@@ -15,10 +15,11 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
     public class ProductService(IProductRepository _productRepository, IMapper mapper)
     {
-        public async Task<ResponseModelDto<int>> Create(ProductCreateRequestDto request)
+        public async Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request)
         {
             var newProduct = new Product
             {
+                Id = Guid.NewGuid(),
                 Name = request.Name.Trim(),
                 Price = request.Price,
                 Stock = 10,
@@ -29,7 +30,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
             var mappedProduct = mapper.Map<ProductCreateRequestDto>(newProduct);
             await _productRepository.Create(mappedProduct);
 
-            return ResponseModelDto<int>.Success(newProduct.Id, HttpStatusCode.Created);
+            return ResponseModelDto<Guid>.Success(newProduct.Id, HttpStatusCode.Created);
         }
 
         public async Task<ResponseModelDto<NoContent>> Delete(int id)

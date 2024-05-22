@@ -20,14 +20,14 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
 {
     public class ProductRepository(AppDbContext context, IUnitOfWork unitOfWork, IMapper _mapper) : IProductRepository
     {
-        public async Task<ResponseModelDto<int>> Create(ProductCreateRequestDto request)
+        public async Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request)
         {
             var mappedProduct = _mapper.Map<Product>(request);
 
             await context.Products.AddAsync(mappedProduct);
             await unitOfWork.CommitAsync();
 
-            return ResponseModelDto<int>.Success(mappedProduct.Id, HttpStatusCode.Created);
+            return ResponseModelDto<Guid>.Success(mappedProduct.Id, HttpStatusCode.Created);
         }
 
         public async Task<ResponseModelDto<NoContent>> Delete(int id)
@@ -80,7 +80,7 @@ namespace Bootcamp.Clean.Repository.Repositories.ProductRepositories
             return ResponseModelDto<ProductDto?>.Success(productAsDto);
         }
 
-        public async Task<bool> HasExist(int id)
+        public async Task<bool> HasExist(Guid id)
         {
             return await context.Products.AnyAsync(x => x.Id == id);
         }

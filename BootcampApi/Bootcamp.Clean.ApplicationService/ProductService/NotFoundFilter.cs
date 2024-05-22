@@ -17,7 +17,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService
 
 
             var productIdFromAction = context.ActionArguments.Values.First()!;
-            int productId = 0;
+            Guid productId = default;
 
             if (actionName == "UpdateProductName" &&
                 productIdFromAction is ProductNameUpdateRequestDto productNameUpdateRequestDto)
@@ -26,7 +26,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService
             }
 
 
-            if (productId == 0 && !int.TryParse(productIdFromAction.ToString(), out productId))
+            if (productId == default && !Guid.TryParse(new Guid(productIdFromAction), out productId))
             {
                 return;
             }

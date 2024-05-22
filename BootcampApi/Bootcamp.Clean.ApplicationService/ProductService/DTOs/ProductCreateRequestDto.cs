@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.ApplicationService.ProductService.DTOs
 {
-    public record ProductCreateRequestDto(string Name, decimal Price);
+    public record ProductCreateRequestDto(string Name, decimal Price, string Barcode, string Created);
 }

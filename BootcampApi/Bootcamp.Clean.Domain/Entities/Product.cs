@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.Domain.Entities
 {
-    public class Product : BaseEntity<int>
+    public class Product : BaseEntity<Guid>
     {
         public string Name { get; set; } = default!;
 

@@ -12,7 +12,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
     public interface IProductRepository
     {
-        Task<ResponseModelDto<int>> Create(ProductCreateRequestDto request);
+        Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request);
         Task<ResponseModelDto<NoContent>> Update(int productId, ProductUpdateRequestDto request);
 
         Task<ResponseModelDto<NoContent>> UpdateProductName(int id, string name);
@@ -23,6 +23,6 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
         Task<ResponseModelDto<ImmutableList<ProductDto>>> GetAllByPageWithCalculatedTax(
             PriceCalculator priceCalculator, int page, int pageSize);
         Task<ResponseModelDto<ProductDto?>> GetById(int id);
-        Task<bool> HasExist(int id);
+        Task<bool> HasExist(Guid id);
     }
 }
