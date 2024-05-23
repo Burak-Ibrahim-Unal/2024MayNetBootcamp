@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
-    public class ProductService(IProductRepository _productRepository, IUnitOfWork unitOfWork, ICacheService _cacheService, ICustomCacheService _customCacheService, IMapper _mapper)
+    public class ProductService(IProductRepository _productRepository, IUnitOfWork _unitOfWork, ICacheService _cacheService, ICustomCacheService _customCacheService, IMapper _mapper)
     {
         private const string _productsRedisKey = "products";
 
@@ -39,7 +39,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 
         public async Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request)
         {
-            unitOfWork.BeginTransaction();
+            _unitOfWork.BeginTransaction();
 
             var newProduct = new Product
             {
@@ -52,18 +52,18 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
             };
 
             var result = await _productRepository.Create(newProduct);
-            await unitOfWork.CommitAsync();
+            await _unitOfWork.CommitAsync();
 
             return ResponseModelDto<Guid>.Success(result, HttpStatusCode.Created);
         }
 
         public async Task<ResponseModelDto<NoContent>> Delete(Guid id)
         {
-            unitOfWork.BeginTransaction();
+            _unitOfWork.BeginTransaction();
 
             await _productRepository.Delete(id);
 
-            await unitOfWork.CommitAsync();
+            await _unitOfWork.CommitAsync();
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
@@ -103,22 +103,22 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 
         public async Task<ResponseModelDto<NoContent>> Update(Guid productId, ProductUpdateRequestDto request)
         {
-            unitOfWork.BeginTransaction();
+            _unitOfWork.BeginTransaction();
 
             await _productRepository.Update(productId, request);
 
-            await unitOfWork.CommitAsync();
+            await _unitOfWork.CommitAsync();
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
 
         public async Task<ResponseModelDto<NoContent>> UpdateProductName(Guid id, string name)
         {
-            unitOfWork.BeginTransaction();
+            _unitOfWork.BeginTransaction();
 
             await _productRepository.UpdateProductName(id, name);
 
-            await unitOfWork.CommitAsync();
+            await _unitOfWork.CommitAsync();
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
