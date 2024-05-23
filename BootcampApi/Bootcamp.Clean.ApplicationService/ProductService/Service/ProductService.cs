@@ -18,6 +18,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
     public class ProductService(IProductRepository _productRepository, IUnitOfWork _unitOfWork, ICacheService _cacheService, ICustomCacheService _customCacheService, IMapper _mapper)
     {
         private const string _productsRedisKey = "products";
+        private static PriceCalculator _priceCalculator;
 
         public async Task<ResponseModelDto<List<ProductDto>>> GetAllWithCalculatedTax(PriceCalculator priceCalculator)
         {
@@ -39,7 +40,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 
         public async Task<ResponseModelDto<Guid>> Create(ProductCreateRequestDto request)
         {
-            _unitOfWork.BeginTransaction();
+            await _customCacheService.KeyDeleteAsync(_productsRedisKey);
 
             var newProduct = new Product
             {
@@ -52,18 +53,21 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
             };
 
             var result = await _productRepository.Create(newProduct);
+
             await _unitOfWork.CommitAsync();
+            await AddProductsToRedis();
 
             return ResponseModelDto<Guid>.Success(result, HttpStatusCode.Created);
         }
 
         public async Task<ResponseModelDto<NoContent>> Delete(Guid id)
         {
-            _unitOfWork.BeginTransaction();
+            await _customCacheService.KeyDeleteAsync(_productsRedisKey);
 
             await _productRepository.Delete(id);
 
             await _unitOfWork.CommitAsync();
+            await AddProductsToRedis();
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
@@ -103,24 +107,34 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 
         public async Task<ResponseModelDto<NoContent>> Update(Guid productId, ProductUpdateRequestDto request)
         {
-            _unitOfWork.BeginTransaction();
+            await _customCacheService.KeyDeleteAsync(_productsRedisKey);
 
             await _productRepository.Update(productId, request);
 
             await _unitOfWork.CommitAsync();
+            await AddProductsToRedis();
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
         }
 
         public async Task<ResponseModelDto<NoContent>> UpdateProductName(Guid id, string name)
         {
-            _unitOfWork.BeginTransaction();
+            await _customCacheService.KeyDeleteAsync(_productsRedisKey);
 
             await _productRepository.UpdateProductName(id, name);
 
             await _unitOfWork.CommitAsync();
+            await AddProductsToRedis();
 
             return ResponseModelDto<NoContent>.Success(HttpStatusCode.NoContent);
+        }
+
+        private async Task AddProductsToRedis()
+        {
+            var productList = await _productRepository.GetAllWithCalculatedTax(_priceCalculator);
+
+            var productListAsJson = JsonSerializer.Serialize(productList);
+            await _customCacheService.SetValueAsync(_productsRedisKey, productListAsJson);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Bootcamp.Clean.Cache.RedisCache
         public RedisCacheService(string url) : this()
         {
             _connectionMultiplexer = ConnectionMultiplexer.Connect(url);
+            _connectionMultiplexer.ConnectionFailed += ConnectionMultiplexerConnectionFailed;
             _database = _connectionMultiplexer.GetDatabase(3);
         }
 
@@ -25,6 +26,11 @@ namespace Bootcamp.Clean.Cache.RedisCache
             return await _database.StringGetAsync(key);
         }
 
+        public async Task<bool> KeyDeleteAsync(string key)
+        {
+            return await _database.KeyDeleteAsync(key);
+        }
+
         public async Task<bool> KeyExistsAsync(string key)
         {
             return await _database.KeyExistsAsync(key);
@@ -33,6 +39,11 @@ namespace Bootcamp.Clean.Cache.RedisCache
         public async Task SetValueAsync(string key, string value)
         {
             await _database.StringSetAsync(key, value);
+        }
+
+        private void ConnectionMultiplexerConnectionFailed(object? sender, ConnectionFailedEventArgs e)
+        {
+            // When Connection failed or problem occured, send sms / email etc... Do here !!!
         }
 
     }
