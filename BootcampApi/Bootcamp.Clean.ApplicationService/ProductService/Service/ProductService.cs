@@ -15,15 +15,15 @@ using System.Threading.Tasks;
 
 namespace Bootcamp.Clean.ApplicationService.ProductService.Service
 {
-    public class ProductService(IProductRepository _productRepository, IUnitOfWork unitOfWork, ICacheService _cacheService, ICustomCacheService _anotherCacheService, IMapper _mapper)
+    public class ProductService(IProductRepository _productRepository, IUnitOfWork unitOfWork, ICacheService _cacheService, ICustomCacheService _customCacheService, IMapper _mapper)
     {
         private const string _productsRedisKey = "products";
 
         public async Task<ResponseModelDto<List<ProductDto>>> GetAllWithCalculatedTax(PriceCalculator priceCalculator)
         {
-            if (await _anotherCacheService.KeyExistsAsync(_productsRedisKey))
+            if (await _customCacheService.KeyExistsAsync(_productsRedisKey))
             {
-                var productListFromRedisAsJson = await _anotherCacheService.GetValueAsync(_productsRedisKey);
+                var productListFromRedisAsJson = await _customCacheService.GetValueAsync(_productsRedisKey);
                 var productListFromRedis = JsonSerializer.Deserialize<List<ProductDto>>(productListFromRedisAsJson!);
                 return ResponseModelDto<List<ProductDto>>.Success(productListFromRedis!);
             }
@@ -31,7 +31,7 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
             var productList = await _productRepository.GetAllWithCalculatedTax(priceCalculator);
 
             var productListAsJson = JsonSerializer.Serialize(productList);
-            await _anotherCacheService.SetValueAsync(_productsRedisKey, productListAsJson);
+            await _customCacheService.SetValueAsync(_productsRedisKey, productListAsJson);
 
             var mappedProducts = _mapper.Map<List<ProductDto>>(productList);
             return ResponseModelDto<List<ProductDto>>.Success(mappedProducts);
