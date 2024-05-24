@@ -15,18 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRepository(builder.Configuration);
-builder.Services.Configure<ApiBehaviorOptions>(x => { x.SuppressModelStateInvalidFilter = true; });
-
-builder.Services.AddAutoMapper(typeof(ServiceAssembly).Assembly);
+builder.Services.AddService();
 
 builder.Services.AddControllers(x => x.Filters.Add<ValidationFilter>());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddProductService();
 
 var app = builder.Build();
 

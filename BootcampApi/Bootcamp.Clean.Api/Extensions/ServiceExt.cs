@@ -1,9 +1,9 @@
-﻿using Bootcamp.Service.ProductService.Configurations;
-using Bootcamp.Service;
+﻿using Bootcamp.Clean.ApplicationService;
+using Bootcamp.Clean.ApplicationService.ProductService.Configurations;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bootcamp.Api.Extensions
+namespace Bootcamp.Clean.Api.Extensions
 {
     public static class ServiceExt
     {

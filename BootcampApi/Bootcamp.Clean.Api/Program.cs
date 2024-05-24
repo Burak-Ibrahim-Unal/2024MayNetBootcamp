@@ -2,6 +2,7 @@ using Bootcamp.Clean.Api.Extensions;
 using Bootcamp.Clean.ApplicationService;
 using Bootcamp.Clean.ApplicationService.Interfaces;
 using Bootcamp.Clean.ApplicationService.ProductService;
+using Bootcamp.Clean.ApplicationService.ProductService.Configurations;
 using Bootcamp.Clean.ApplicationService.ProductService.Helpers;
 using Bootcamp.Clean.ApplicationService.ProductService.Service;
 using Bootcamp.Clean.Cache.InMemoryCache;
@@ -10,6 +11,7 @@ using Bootcamp.Clean.Repository;
 using Bootcamp.Clean.Repository.Context;
 using Bootcamp.Clean.Repository.Repositories;
 using Bootcamp.Clean.Repository.Repositories.ProductRepositories;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -30,6 +32,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ProductService>();
+
+//builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+builder.Services.AddValidatorsFromAssemblyContaining<ProductCreateRequestValidator>();
 
 builder.Services.AddSingleton<ICustomCacheService, RedisCacheService>(options =>
 {
