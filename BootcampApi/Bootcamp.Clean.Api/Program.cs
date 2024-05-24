@@ -1,3 +1,4 @@
+using Bootcamp.Clean.Api.Extensions;
 using Bootcamp.Clean.ApplicationService;
 using Bootcamp.Clean.ApplicationService.Interfaces;
 using Bootcamp.Clean.ApplicationService.ProductService;
@@ -17,24 +18,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddDbContext<AppDbContext>(x =>
-//{
-//    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerCleanDb"),
-//        options => { options.MigrationsAssembly(typeof(RepositoryAssembly).Assembly.GetName().Name); });
-//});
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerCleanDb"),
-        options => { options.MigrationsAssembly("Bootcamp.Clean.Repository"); });
-});
-
-
 //builder.Services.Configure<ApiBehaviorOptions>(x => { x.SuppressModelStateInvalidFilter = true; });
+builder.Services.AddRepository(builder.Configuration);
 builder.Services.AddScoped<NotFoundFilter>();
 builder.Services.AddSingleton<PriceCalculator>();
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddAutoMapper(typeof(ServiceAssembly).Assembly);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

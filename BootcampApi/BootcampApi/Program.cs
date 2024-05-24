@@ -1,3 +1,4 @@
+using Bootcamp.Api.Extensions;
 using Bootcamp.Repository;
 using Bootcamp.Repository.Context;
 using Bootcamp.Repository.Data;
@@ -13,13 +14,7 @@ using Microsoft.Extensions.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddDbContext<AppDbContext>(x =>
-{
-    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"),
-        x => { x.MigrationsAssembly(typeof(RepositoryAssembly).Assembly.GetName().Name); });
-});
-
+builder.Services.AddRepository(builder.Configuration);
 builder.Services.Configure<ApiBehaviorOptions>(x => { x.SuppressModelStateInvalidFilter = true; });
 
 builder.Services.AddAutoMapper(typeof(ServiceAssembly).Assembly);
@@ -31,9 +26,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddProductService();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
