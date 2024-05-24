@@ -13,5 +13,9 @@ namespace Bootcamp.Clean.ApplicationService.Interfaces
         Task<bool> DeleteKeyAsync(string key);
         Task<bool> KeyExistsAsync(string key);
         Task<bool> KeyDeleteAsync(string key);
+        Task<long> ListLeftPushAsync(string key, string value);
+        Task<long> ListRightPushAsync(string key, string value);
+        Task<string> ListGetByIndexAsync(string key);
+
     }
 }

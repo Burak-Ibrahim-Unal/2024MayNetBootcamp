@@ -18,21 +18,34 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
     public class ProductService(IProductRepository _productRepository, IUnitOfWork _unitOfWork, ICacheService _cacheService, ICustomCacheService _customCacheService, IMapper _mapper)
     {
         private const string _productsRedisKey = "products";
+        private const string _productsRedisKeyAsList = "products-list";
         private static PriceCalculator _priceCalculator;
 
         public async Task<ResponseModelDto<List<ProductDto>>> GetAllWithCalculatedTax(PriceCalculator priceCalculator)
         {
             if (await _customCacheService.KeyExistsAsync(_productsRedisKey))
             {
+                #region 1.WAY
+                /* 1.WAY Redis String => */
                 var productListFromRedisAsJson = await _customCacheService.GetValueAsync(_productsRedisKey);
+
+                #endregion
                 var productListFromRedis = JsonSerializer.Deserialize<List<ProductDto>>(productListFromRedisAsJson!);
                 return ResponseModelDto<List<ProductDto>>.Success(productListFromRedis!);
             }
 
             var productList = await _productRepository.GetAllWithCalculatedTax(priceCalculator);
+            #region 1.WAY
 
-            var productListAsJson = JsonSerializer.Serialize(productList);
-            await _customCacheService.SetValueAsync(_productsRedisKey, productListAsJson);
+            // 1.WAY Redis String => var productListAsJson = JsonSerializer.Serialize(productList);
+            // 1.WAY Redis String =>  await _customCacheService.SetValueAsync(_productsRedisKey, productListAsJson); 
+            #endregion
+
+            /* 2.WAY Redis List => */
+            productList.ForEach(product =>
+            {
+                _customCacheService.ListLeftPushAsync($"{_productsRedisKeyAsList}:{product.Id}", JsonSerializer.Serialize(product));
+            });
 
             var mappedProducts = _mapper.Map<List<ProductDto>>(productList);
             return ResponseModelDto<List<ProductDto>>.Success(mappedProducts);
@@ -75,13 +88,33 @@ namespace Bootcamp.Clean.ApplicationService.ProductService.Service
         public async Task<ResponseModelDto<ProductDto?>> GetById(Guid id)
         {
             //cache aside design pattern
-            var productFromCache = _cacheService.Get<ProductDto?>($"product:{id}");
 
-            if (productFromCache is not null)
-                return ResponseModelDto<ProductDto?>.Success(productFromCache);
+            var redisKey = $"{_productsRedisKeyAsList}:{id}";
+            #region InMemoryCache
+            //var productFromCache = _cacheService.Get<ProductDto?>($"product:{id}");
+
+            //if (productFromCache is not null)
+            //    return ResponseModelDto<ProductDto?>.Success(productFromCache);
+            #endregion
+
+            #region RedisCache
+            if (await _customCacheService.KeyExistsAsync($"{_productsRedisKeyAsList}:{id}"))
+            {
+                var productAsJsonFromRedis = await _customCacheService.ListGetByIndexAsync(redisKey);
+                var productFromRedis = JsonSerializer.Deserialize<ProductDto>(productAsJsonFromRedis!);
+                return ResponseModelDto<ProductDto?>.Success(productFromRedis);
+            }
+            #endregion
 
             var product = await _productRepository.GetById(id);
-            _cacheService.Add($"product:{id}", new ProductDto(product.Id, product.Name, product.Price, product.Stock, product.Barcode, product.Created.ToShortTimeString()));
+
+            #region InMemoryCache Add
+            //_cacheService.Add($"product:{id}", new ProductDto(product.Id, product.Name, product.Price, product.Stock, product.Barcode, product.Created.ToShortTimeString())); 
+            #endregion
+
+            #region InRedisCache Add
+            await _customCacheService.ListLeftPushAsync(redisKey, JsonSerializer.Serialize(product)); 
+            #endregion
 
             var mappedProduct = _mapper.Map<ProductDto>(product);
             return ResponseModelDto<ProductDto?>.Success(mappedProduct);

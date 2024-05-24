@@ -39,7 +39,6 @@ namespace BootcampApi.Controllers
         [MyActionFilter]
         [MyResultFilter]
         [HttpGet("{productId:int}")]
-        [HttpGet("{productId:int}")]
         public async Task<IActionResult> GetById(int productId, [FromServices] PriceCalculator priceCalculator)
         {
             return CreateActionResult(await _productService.GetByIdWithCalculatedTax(productId, priceCalculator));

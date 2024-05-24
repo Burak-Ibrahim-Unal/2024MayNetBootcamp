@@ -8,9 +8,12 @@ namespace Bootcamp.Service.ProductService.Configurations
     {
         public ProductMapper()
         {
-            CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Product, ProductDto>()
             //.ForMember(x => x.Created, opt => opt.MapFrom(y => y.Created.ToShortDateString()))
-            //.ForMember(x => x.Price, opt => opt.MapFrom(y => 200));
+            //.ForMember(x => x.Price, opt => opt.MapFrom(y => 200));    
+            .ForPath(x => x.Created, opt => opt.MapFrom(y => y.Created.ToShortDateString()))
+            .ForPath(x => x.Price, opt => opt.MapFrom(y => y.Price))
+            .ReverseMap();
         }
     }
 }

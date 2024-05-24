@@ -26,6 +26,11 @@ namespace Bootcamp.Clean.Cache.RedisCache
             return await _database.StringGetAsync(key);
         }
 
+        public async Task<string> ListGetByIndexAsync(string key)
+        {
+            return await _database.ListGetByIndexAsync(key, 0);
+        }
+
         public async Task<bool> KeyDeleteAsync(string key)
         {
             return await _database.KeyDeleteAsync(key);
@@ -41,10 +46,19 @@ namespace Bootcamp.Clean.Cache.RedisCache
             await _database.StringSetAsync(key, value);
         }
 
+        public async Task<long> ListLeftPushAsync(string key, string value)
+        {
+            return await _database.ListLeftPushAsync(key, value);
+        }
+
+        public async Task<long> ListRightPushAsync(string key, string value)
+        {
+            return await _database.ListRightPushAsync(key, value);
+        }
+
         private void ConnectionMultiplexerConnectionFailed(object? sender, ConnectionFailedEventArgs e)
         {
             // When Connection failed or problem occured, send sms / email etc... Do here !!!
         }
-
     }
 }
