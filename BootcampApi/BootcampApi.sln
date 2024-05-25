@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.Clean.Repository",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.Clean.Api", "Bootcamp.Clean.Api\Bootcamp.Clean.Api.csproj", "{E5A88429-857D-45EE-9696-7372461A6622}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Clean.Cache", "Bootcamp.Clean.Cache\Bootcamp.Clean.Cache.csproj", "{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.Clean.Cache", "Bootcamp.Clean.Cache\Bootcamp.Clean.Cache.csproj", "{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Web", "Bootcamp.Web\Bootcamp.Web.csproj", "{BC28D0FA-60BA-40E8-996D-0F26F0CDF470}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC28D0FA-60BA-40E8-996D-0F26F0CDF470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC28D0FA-60BA-40E8-996D-0F26F0CDF470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC28D0FA-60BA-40E8-996D-0F26F0CDF470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC28D0FA-60BA-40E8-996D-0F26F0CDF470}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{12BEA9C2-2BAF-4BF2-8C45-183E28F667B6} = {2AACD46B-4C26-4C48-BC7B-BBF39F2778F6}
 		{E5A88429-857D-45EE-9696-7372461A6622} = {2AACD46B-4C26-4C48-BC7B-BBF39F2778F6}
 		{A609EDAC-6F7D-4B9F-8C28-20FE07F8B4CE} = {2AACD46B-4C26-4C48-BC7B-BBF39F2778F6}
+		{BC28D0FA-60BA-40E8-996D-0F26F0CDF470} = {0BA5B15E-5067-4D78-B6AD-05368E4A3D90}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79AEA9C0-554E-43C4-803E-7E24F57CBB89}

@@ -11,6 +11,7 @@ namespace Bootcamp.Service.Users
         string Email,
         string Password,
         string Name,
-        string Lastname,
-        DateTime? BirthDate);
+        string Lastname
+        //DateTime? BirthDate
+        );
 }

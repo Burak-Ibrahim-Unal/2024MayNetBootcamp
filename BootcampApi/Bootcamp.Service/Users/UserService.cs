@@ -27,7 +27,7 @@ namespace Bootcamp.Service.Users
                 Email = request.Email,
                 Name = request.Name,
                 Surname = request.Lastname,
-                BirthDate = request.BirthDate
+                //BirthDate = request.BirthDate
             };
 
             var result = await userManager.CreateAsync(user, request.Password);
@@ -37,11 +37,11 @@ namespace Bootcamp.Service.Users
                 return ResponseModelDto<Guid>.Fail(result.Errors.Select(x => x.Description).ToList());
             }
 
-            if (request.BirthDate.HasValue)
-            {
-                await userManager.AddClaimAsync(user,
-                    new Claim(ClaimTypes.DateOfBirth, user.BirthDate.Value.ToShortDateString()));
-            }
+            //if (request.BirthDate.HasValue)
+            //{
+            //    await userManager.AddClaimAsync(user,
+            //        new Claim(ClaimTypes.DateOfBirth, user.BirthDate.Value.ToShortDateString()));
+            //}
 
 
             return ResponseModelDto<Guid>.Success(user.Id, HttpStatusCode.Created);
