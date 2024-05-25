@@ -48,6 +48,8 @@ namespace Bootcamp.Api.Extensions
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.MapControllers();

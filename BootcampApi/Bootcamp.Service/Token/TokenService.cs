@@ -7,9 +7,8 @@ using System.Text;
 
 namespace Bootcamp.Service.Token
 {
-    public class TokenService(IOptions<CustomTokenOptions> customTokenOptions, IOptions<Clients> clients) : ITokenService
+    public class TokenService(IOptions<CustomTokenOptions> tokenOptions, IOptions<Clients> clients) : ITokenService
     {
-        // options design pattern > read settings from appsettings with type safety (like typescript)
         public Task<ResponseModelDto<TokenResponseDto>> CreateClientAccessToken(GetAccessTokenRequestDto request)
         {
             if (!clients.Value.Items.Any(x => x.Id == request.ClientId && x.Secret == request.ClientSecret))
@@ -23,16 +22,23 @@ namespace Bootcamp.Service.Token
             {
                 new Claim("clientId", request.ClientId)
             };
-            var tokenExpire = DateTime.Now.AddHours(customTokenOptions.Value.ExpireByHour);
 
+            tokenOptions.Value.Audience.ToList()
+                .ForEach(x => 
+                { 
+                    claims.Add(new Claim(JwtRegisteredClaimNames.Aud, x)); 
+                });
 
-            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(customTokenOptions.Value.Signature));
+            var tokenExpire = DateTime.Now.AddHours(tokenOptions.Value.ExpireByHour);
+
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.Value.Signature));
 
 
             //DateTimeOffset.Now.ToUnixTimeSeconds()
             var jwtToken = new JwtSecurityToken(
                 claims: claims,
                 expires: tokenExpire,
+                issuer: tokenOptions.Value.Issuer,
                 signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature));
 
 

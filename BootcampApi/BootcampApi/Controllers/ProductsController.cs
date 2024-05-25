@@ -3,6 +3,7 @@ using Bootcamp.Service.ProductService.DTOs;
 using Bootcamp.Service.ProductService.Helpers;
 using Bootcamp.Service.ProductService.ProductServices;
 using BootcampApi.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,11 +18,11 @@ namespace BootcampApi.Controllers
             _productService = productService;
         }
 
+        [Authorize]
         //baseUrl/api/products
         [HttpGet]
         public async Task<IActionResult> GetAll([FromServices] PriceCalculator priceCalculator)
         {
-            throw new Exception("hataaaaaaaa");
             return Ok(await _productService.GetAllWithCalculatedTax(priceCalculator));
         }
 
