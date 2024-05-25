@@ -3,9 +3,11 @@ using Bootcamp.Repository.Context;
 using Bootcamp.Repository.Data;
 using Bootcamp.Service.Extensions;
 using Bootcamp.Service.Token;
+using Bootcamp.Service.Users;
 using BootcampApi.Filters;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
@@ -16,44 +18,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRepository(builder.Configuration);
 builder.Services.AddService(builder.Configuration);
-
-builder.Services.AddIdentity<AppUser, AppRole>(identityOptions =>
-{
-    identityOptions.User.RequireUniqueEmail = true;
-    identityOptions.Password.RequireDigit = true;
-    identityOptions.Password.RequireLowercase = false;
-    identityOptions.Password.RequireUppercase = false;
-    identityOptions.Password.RequireNonAlphanumeric = false;
-    identityOptions.Password.RequiredLength = 6;
-}).AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddScoped<IAuthorizationHandler, OverAgeRequirementHandler>();
 
 builder.Services.AddControllers(x => x.Filters.Add<ValidationFilter>());
-
-builder.Services.AddAuthentication(authenticationOptions =>
-{
-    authenticationOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    authenticationOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, schemeOptions =>
-{
-    var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<CustomTokenOptions>()!;
-    schemeOptions.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidIssuer = tokenOptions.Issuer,
-        ValidateIssuer = true,
-
-        ValidAudiences = tokenOptions.Audience,
-        ValidateAudience = true,
-
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.Signature)),
-        ValidateIssuerSigningKey = true,
-
-        ValidateLifetime = true
-    };
-});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("Over18AgePolicy", x => { x.AddRequirements(new OverAgeRequirement() { Age = 10 }); });
+
+
+    x.AddPolicy("UpdatePolicy", y => { y.RequireClaim("update", "true"); });
+});
 
 var app = builder.Build();
 

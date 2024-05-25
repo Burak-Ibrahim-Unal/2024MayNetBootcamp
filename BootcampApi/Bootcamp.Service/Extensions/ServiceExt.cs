@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Bootcamp.Repository.Context;
 
 namespace Bootcamp.Service.Extensions
 {
@@ -38,8 +39,8 @@ namespace Bootcamp.Service.Extensions
             services.Configure<Clients>(configuration.GetSection("Clients"));
             services.AddScoped<ITokenService,TokenService>();
             services.AddScoped<UserService>();
-            //services.AddIdentityExt();
-            //services.AddAuthenticationExt(configuration);
+            services.AddIdentityExt();
+            services.AddAuthenticationExt(configuration);
         }
 
         public static async Task SeedIdentityData(this WebApplication app)
@@ -53,47 +54,47 @@ namespace Bootcamp.Service.Extensions
             await UserSeedData.Seed(userManager, roleManager);
         }
 
-        //public static void AddIdentityExt(this IServiceCollection services)
-        //{
-        //    // add to Identity
-        //    // UserManager<AppUser> UserManager
-        //    // RoleManager<AppRole> RoleManager
-        //    // SignInManager<AppUser> SignInManager
-        //    services.AddIdentity<AppUser, AppRole>(options =>
-        //    {
-        //        options.User.RequireUniqueEmail = true;
-        //        options.Password.RequireDigit = false;
-        //        options.Password.RequireLowercase = false;
-        //        options.Password.RequireUppercase = false;
-        //        options.Password.RequireNonAlphanumeric = false;
-        //        options.Password.RequiredLength = 6;
-        //    }).AddEntityFrameworkStores<AppDbContext>();
-        //}
+        public static void AddIdentityExt(this IServiceCollection services)
+        {
+            // add to Identity
+            // UserManager<AppUser> UserManager
+            // RoleManager<AppRole> RoleManager
+            // SignInManager<AppUser> SignInManager
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 6;
+            }).AddEntityFrameworkStores<AppDbContext>();
+        }
 
-        //public static void AddAuthenticationExt(this IServiceCollection services, IConfiguration configuration)
-        //{
-        //    services.AddAuthentication(option =>
-        //    {
-        //        option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        //        option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        //    }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-        //    {
-        //        var tokenOptions = configuration.GetSection("TokenOptions").Get<CustomTokenOptions>()!;
+        public static void AddAuthenticationExt(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+            {
+                var tokenOptions = configuration.GetSection("TokenOptions").Get<CustomTokenOptions>()!;
 
-        //        options.TokenValidationParameters = new TokenValidationParameters
-        //        {
-        //            ValidIssuer = tokenOptions.Issuer,
-        //            ValidateIssuer = true,
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidateIssuer = true,
 
-        //            ValidAudiences = tokenOptions.Audience,
-        //            ValidateAudience = true,
+                    ValidAudiences = tokenOptions.Audience,
+                    ValidateAudience = true,
 
-        //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.Signature)),
-        //            ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.Signature)),
+                    ValidateIssuerSigningKey = true,
 
-        //            ValidateLifetime = true
-        //        };
-        //    });
-        //}
+                    ValidateLifetime = true
+                };
+            });
+        }
     }
 }
