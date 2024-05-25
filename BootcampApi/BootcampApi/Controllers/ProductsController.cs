@@ -21,6 +21,7 @@ namespace BootcampApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll([FromServices] PriceCalculator priceCalculator)
         {
+            throw new Exception("hataaaaaaaa");
             return Ok(await _productService.GetAllWithCalculatedTax(priceCalculator));
         }
 
