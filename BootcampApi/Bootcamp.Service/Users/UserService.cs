@@ -27,7 +27,7 @@ namespace Bootcamp.Service.Users
                 Email = request.Email,
                 Name = request.Name,
                 Surname = request.Lastname,
-                //BirthDate = request.BirthDate
+                BirthDate = request.BirthDate
             };
 
             var result = await userManager.CreateAsync(user, request.Password);

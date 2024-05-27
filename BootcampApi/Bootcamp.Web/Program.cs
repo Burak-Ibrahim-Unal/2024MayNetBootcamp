@@ -26,7 +26,7 @@ builder.Services.AddHttpClient<WeatherService>(options =>
     .AddHttpMessageHandler<ClientCredentialTokenInterceptor>();
 
 
-builder.Services.Configure<TokenOption>(builder.Configuration.GetSection("TokenOption"));
+builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOptions"));
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ClientCredentialTokenInterceptor>();

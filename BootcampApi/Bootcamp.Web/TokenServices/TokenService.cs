@@ -13,13 +13,12 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 namespace Bootcamp.Web.TokenServices
 {
     public class TokenService(
-        HttpClient client,
-        IOptions<TokenOption> tokenOptions,
-        IMemoryCache memoryCache)
+        HttpClient _httpClient,
+        IOptions<CustomTokenOption> _tokenOptions,
+        IMemoryCache _memoryCache)
 
     {
         private const string TokenKey = "client_credential:access_token";
-
 
         public async Task<(bool isSuccess, string? token, List<string>? error)> GetTokenWithClientCredentials()
         {
@@ -28,17 +27,17 @@ namespace Bootcamp.Web.TokenServices
             //  null,false,error
 
 
-            if (memoryCache.TryGetValue(TokenKey, out string? token))
+            if (_memoryCache.TryGetValue(TokenKey, out string? token))
             {
                 return (true, token!, null);
             }
 
 
             var requestAsBody =
-                new ClientCredentialTokenRequestDto(tokenOptions.Value.ClientId, tokenOptions.Value.ClientSecret);
+                new ClientCredentialTokenRequestDto(_tokenOptions.Value.ClientId, _tokenOptions.Value.ClientSecret);
 
             var response =
-                await client.PostAsJsonAsync("/api/Token/CreateClientCredential",
+                await _httpClient.PostAsJsonAsync("/api/Token/CreateClientCredential",
                     requestAsBody);
 
 
@@ -52,7 +51,7 @@ namespace Bootcamp.Web.TokenServices
             }
 
 
-            memoryCache.Set(TokenKey, responseAsBody!.Data!.AccessToken, TimeSpan.FromHours(9));
+            _memoryCache.Set(TokenKey, responseAsBody!.Data!.AccessToken, TimeSpan.FromHours(9));
 
             return (true, responseAsBody.Data.AccessToken, null);
         }
@@ -60,7 +59,7 @@ namespace Bootcamp.Web.TokenServices
 
         public void ClearTokenCache()
         {
-            memoryCache.Remove(TokenKey);
+            _memoryCache.Remove(TokenKey);
         }
     }
 }

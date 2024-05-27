@@ -38,8 +38,6 @@ namespace Bootcamp.Web.Controllers
             #endregion
 
             ViewBag.temp = await weatherService.GetWeatherForecastWithCityBetter("istanbul");
-
-
             return View();
         }
 
