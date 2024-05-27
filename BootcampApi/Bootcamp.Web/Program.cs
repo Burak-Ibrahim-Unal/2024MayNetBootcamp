@@ -22,16 +22,13 @@ builder.Services.AddHttpClient<UserService>(options =>
 builder.Services.AddHttpClient<WeatherService>(options =>
 {
     options.BaseAddress = new Uri(builder.Configuration.GetSection("Microservices")["BaseUrl"]!);
-})
-    .AddHttpMessageHandler<ClientCredentialTokenInterceptor>();
+}).AddHttpMessageHandler<ClientCredentialTokenInterceptor>();
 
-
-builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOptions"));
+builder.Services.Configure<CustomTokenOptions>(builder.Configuration.GetSection("TokenOptions"));
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ClientCredentialTokenInterceptor>();
 builder.Services.AddMemoryCache();
-
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
     CookieAuthenticationDefaults.AuthenticationScheme,

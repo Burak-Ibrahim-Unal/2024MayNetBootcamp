@@ -14,7 +14,7 @@ namespace Bootcamp.Web.TokenServices
 {
     public class TokenService(
         HttpClient _httpClient,
-        IOptions<CustomTokenOption> _tokenOptions,
+        IOptions<CustomTokenOptions> _tokenOptions,
         IMemoryCache _memoryCache)
 
     {
