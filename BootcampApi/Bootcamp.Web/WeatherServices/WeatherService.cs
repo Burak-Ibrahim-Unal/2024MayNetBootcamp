@@ -30,7 +30,7 @@ namespace Bootcamp.Web.WeatherServices
             if (!response.IsSuccessStatusCode)
             {
                 responseAsBody!.FailMessages!.ForEach(x => { _logger.LogError(x); });
-                //loglama yapılacak
+                //loglama yapıldı
 
                 return "sıcaklık bilgisi alınamadı.";
             }

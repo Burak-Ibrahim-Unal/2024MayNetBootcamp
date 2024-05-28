@@ -5,12 +5,12 @@ using System.Net.Http;
 
 namespace Bootcamp.Web.TokenServices
 {
-    public class ClientCredentialTokenInterceptor(TokenService tokenService) : DelegatingHandler
+    public class ClientCredentialTokenInterceptor(TokenService _tokenService) : DelegatingHandler
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
-            var tokenAsClientCredential = await tokenService.GetTokenWithClientCredentials();
+            var tokenAsClientCredential = await _tokenService.GetTokenWithClientCredentials();
 
             if (!tokenAsClientCredential.isSuccess)
             {
@@ -28,10 +28,10 @@ namespace Bootcamp.Web.TokenServices
             {
                 //  throw new UnauthorizedAccessException();
 
-                tokenService.ClearTokenCache();
+                _tokenService.ClearTokenCache();
 
 
-                tokenAsClientCredential = await tokenService.GetTokenWithClientCredentials();
+                tokenAsClientCredential = await _tokenService.GetTokenWithClientCredentials();
 
                 if (!tokenAsClientCredential.isSuccess)
                 {
