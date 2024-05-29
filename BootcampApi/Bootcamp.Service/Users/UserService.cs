@@ -2,6 +2,8 @@
 using System.Net;
 using System.Security.Claims;
 using System.Text;
+using Bootcamp.Repository.Repositories;
+using Bootcamp.Repository.Token;
 using Bootcamp.Service.SharedDto;
 using Bootcamp.Service.Token;
 using Domain.Entities;
@@ -13,10 +15,11 @@ using Microsoft.IdentityModel.Tokens;
 namespace Bootcamp.Service.Users
 {
     public class UserService(
-        UserManager<AppUser> userManager,
-        RoleManager<AppRole> roleManager,
-        IOptions<CustomTokenOptions> tokenOptions,
-        IOptions<Clients> clients)
+        IGenericRepository<RefreshToken> _refreshTokenRepository,
+        UserManager<AppUser> _userManager,
+        RoleManager<AppRole> _roleManager,
+        IOptions<CustomTokenOptions> _tokenOptions,
+        IOptions<Clients> _clients)
     {
         // signup
         public async Task<ResponseModelDto<Guid>> SignUp(SignUpRequestDto request)
@@ -30,7 +33,7 @@ namespace Bootcamp.Service.Users
                 BirthDate = request.BirthDate
             };
 
-            var result = await userManager.CreateAsync(user, request.Password);
+            var result = await _userManager.CreateAsync(user, request.Password);
 
             if (!result.Succeeded)
             {
@@ -54,7 +57,7 @@ namespace Bootcamp.Service.Users
         {
             // Fast fail
             // Guard clauses
-            var user = await userManager.FindByEmailAsync(request.Email);
+            var user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user is null)
             {
@@ -62,7 +65,7 @@ namespace Bootcamp.Service.Users
             }
 
 
-            var result = await userManager.CheckPasswordAsync(user, request.Password);
+            var result = await _userManager.CheckPasswordAsync(user, request.Password);
 
             if (!result)
             {
@@ -81,17 +84,17 @@ namespace Bootcamp.Service.Users
             };
 
 
-            tokenOptions.Value.Audience.ToList()
+            _tokenOptions.Value.Audience.ToList()
                 .ForEach(x => { userClaimList.Add(new Claim(JwtRegisteredClaimNames.Aud, x)); });
 
-            var userRoles = await userManager.GetRolesAsync(user);
+            var userRoles = await _userManager.GetRolesAsync(user);
 
             foreach (var userRole in userRoles)
             {
                 userClaimList.Add(new Claim(ClaimTypes.Role, userRole));
             }
 
-            var userClaims = await userManager.GetClaimsAsync(user);
+            var userClaims = await _userManager.GetClaimsAsync(user);
 
 
             foreach (var userClaim in userClaims)
@@ -102,7 +105,7 @@ namespace Bootcamp.Service.Users
 
             foreach (var roleName in userRoles)
             {
-                var role = await roleManager.FindByNameAsync(roleName);
+                var role = await _roleManager.FindByNameAsync(roleName);
 
                 if (role is null)
                 {
@@ -110,7 +113,7 @@ namespace Bootcamp.Service.Users
                 }
 
 
-                var roleClaim = await roleManager.GetClaimsAsync(role);
+                var roleClaim = await _roleManager.GetClaimsAsync(role);
 
                 foreach (var roleAsClaim in roleClaim)
                 {
@@ -119,17 +122,17 @@ namespace Bootcamp.Service.Users
             }
 
 
-            var tokenExpire = DateTime.Now.AddHours(tokenOptions.Value.ExpireByHour);
+            var tokenExpire = DateTime.Now.AddHours(_tokenOptions.Value.ExpireByHour);
 
 
-            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.Value.Signature));
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenOptions.Value.Signature));
 
 
             //DateTimeOffset.Now.ToUnixTimeSeconds()
             var jwtToken = new JwtSecurityToken(
                 claims: userClaimList,
                 expires: tokenExpire,
-                issuer: tokenOptions.Value.Issuer,
+                issuer: _tokenOptions.Value.Issuer,
                 signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature));
 
 
