@@ -70,5 +70,10 @@ namespace Bootcamp.Repository.Repositories
 
             //return entity is not null;
         }
+
+        public IQueryable<T> Where(Expression<Func<T, bool>> predicate)
+        {
+            return DbSet.Where(predicate);
+        }
     }
 }

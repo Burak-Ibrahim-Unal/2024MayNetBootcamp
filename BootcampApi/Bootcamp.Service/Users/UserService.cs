@@ -1,4 +1,5 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Data.Entity;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
@@ -18,8 +19,9 @@ namespace Bootcamp.Service.Users
         IGenericRepository<RefreshToken> _refreshTokenRepository,
         UserManager<AppUser> _userManager,
         RoleManager<AppRole> _roleManager,
-        IOptions<CustomTokenOptions> _tokenOptions,
-        IOptions<Clients> _clients)
+        IOptions<CustomTokenOptions> _customTokenOptions,
+        IOptions<Clients> _clients,
+        IUnitOfWork _unitOfWork)
     {
         // signup
         public async Task<ResponseModelDto<Guid>> SignUp(SignUpRequestDto request)
@@ -72,29 +74,82 @@ namespace Bootcamp.Service.Users
                 return ResponseModelDto<TokenResponseDto>.Fail("Email or Password is wrong", HttpStatusCode.BadRequest);
             }
 
-            // userId
-            // userName
-            // roller
-            // userClaim => 
-            // role claim => permission
+            var userClaims = CreateUserClaims(user, _customTokenOptions.Value);
+            var accessToken = CreateAccessToken(_customTokenOptions.Value, userClaims.Result);
+            var refreshToken = await CreateOrUpdateRefreshToken(user.Id);
+
+            return ResponseModelDto<TokenResponseDto>.Success(new TokenResponseDto(accessToken, refreshToken));
+        }
+
+        private async Task<string> CreateOrUpdateRefreshToken(Guid userId)
+        {
+            var hasRefreshToken = await _refreshTokenRepository.Where(rt => rt.UserId == userId).SingleOrDefaultAsync();
+            if (hasRefreshToken != null)
+            {
+                hasRefreshToken = new RefreshToken()
+                {
+                    Code = new Guid(),
+                    UserId = userId,
+                    Expire = DateTime.Now.AddDays(_customTokenOptions.Value.RefreshTokenExpireByDay)
+                };
+
+                await _refreshTokenRepository.Create(hasRefreshToken);
+            }
+            else
+            {
+                hasRefreshToken!.Code = Guid.NewGuid();
+                hasRefreshToken!.Expire = DateTime.Now.AddDays(_customTokenOptions.Value.RefreshTokenExpireByDay);
+
+                await _refreshTokenRepository.Update(hasRefreshToken);
+            }
+
+            await _unitOfWork.CommitAsync();
+
+            return hasRefreshToken.Code.ToString();
+        }
+
+        private string CreateAccessToken(CustomTokenOptions customTokenOptions, List<Claim> claimList)
+        {
+            var tokenExpire = DateTime.Now.AddHours(customTokenOptions.ExpireByHour);
+
+
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(customTokenOptions.Signature));
+
+            //DateTimeOffset.Now.ToUnixTimeSeconds()
+            var jwtToken = new JwtSecurityToken(
+                claims: claimList,
+                expires: tokenExpire,
+                issuer: customTokenOptions.Issuer,
+                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature));
+
+
+            var handler = new JwtSecurityTokenHandler();
+
+            var token = handler.WriteToken(jwtToken);
+
+            return token;
+        }
+
+        private async Task<List<Claim>> CreateUserClaims(AppUser appUser, CustomTokenOptions customTokenOptions)
+        {
             var userClaimList = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName!)
+                new Claim(ClaimTypes.NameIdentifier, appUser.Id.ToString()),
+                new Claim(ClaimTypes.Name, appUser.UserName!)
             };
 
 
-            _tokenOptions.Value.Audience.ToList()
+            customTokenOptions.Audience.ToList()
                 .ForEach(x => { userClaimList.Add(new Claim(JwtRegisteredClaimNames.Aud, x)); });
 
-            var userRoles = await _userManager.GetRolesAsync(user);
+            var userRoles = await _userManager.GetRolesAsync(appUser);
 
             foreach (var userRole in userRoles)
             {
                 userClaimList.Add(new Claim(ClaimTypes.Role, userRole));
             }
 
-            var userClaims = await _userManager.GetClaimsAsync(user);
+            var userClaims = await _userManager.GetClaimsAsync(appUser);
 
 
             foreach (var userClaim in userClaims)
@@ -121,27 +176,7 @@ namespace Bootcamp.Service.Users
                 }
             }
 
-
-            var tokenExpire = DateTime.Now.AddHours(_tokenOptions.Value.ExpireByHour);
-
-
-            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenOptions.Value.Signature));
-
-
-            //DateTimeOffset.Now.ToUnixTimeSeconds()
-            var jwtToken = new JwtSecurityToken(
-                claims: userClaimList,
-                expires: tokenExpire,
-                issuer: _tokenOptions.Value.Issuer,
-                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature));
-
-
-            var handler = new JwtSecurityTokenHandler();
-
-            var token = handler.WriteToken(jwtToken);
-
-
-            return ResponseModelDto<TokenResponseDto>.Success(new TokenResponseDto(token));
+            return userClaimList;
         }
     }
 }

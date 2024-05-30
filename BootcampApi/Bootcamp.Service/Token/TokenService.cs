@@ -49,5 +49,10 @@ namespace Bootcamp.Service.Token
 
             return Task.FromResult(ResponseModelDto<TokenResponseDto>.Success(new TokenResponseDto(token)));
         }
+
+        public Task<ResponseModelDto<TokenResponseDto>> CreateAccessTokenWithRefreshToken()
+        {
+
+        }
     }
 }
